@@ -1,0 +1,70 @@
+                         ┌─────────────────┐
+                         │   CLAUDE CODE   │
+                         │   QA AGENT      │
+                         └────────┬────────┘
+                                  │
+                 ┌────────────────┼────────────────┐
+                 │                │                │
+                 ▼                ▼                ▼
+             Jira MCP       Playwright MCP      Skills
+                 │                │                │
+                 ▼                ▼                ▼
+           Requirement       Application       QA Rules
+             Analysis          Inspection
+                 │                │
+                 └───────┬────────┘
+                         ▼
+                  Test Generation
+                         │
+                         ▼
+                  test-cases/*.json
+                         │
+                         ▼
+               ┌─────────────────────┐
+               │ Playwright Agents   │
+               │                     │
+               │ Planner             │
+               │ Generator           │
+               │ Healer              │
+               └──────────┬──────────┘
+                          │
+                          ▼
+                  OUR QA FRAMEWORK
+                          │
+           ┌──────────────┼──────────────┐
+           ▼              ▼              ▼
+       Fixtures         Flows          Data
+           │              │
+           ▼              ▼
+        Pages         Components
+           │              │
+           └───────┬──────┘
+                   ▼
+              Playwright
+                   │
+                   ▼
+              Application
+                   │
+                   ▼
+               Evidence
+                   │
+       ┌───────────┼────────────┐
+       ▼           ▼            ▼
+   Screenshot    Trace       Console
+       │           │            │
+       └───────────┼────────────┘
+                   ▼
+             Failure Analysis
+                   │
+        ┌──────────┼──────────┐
+        ▼          ▼          ▼
+      Retry      Fix        Jira Bug
+                   │
+                   ▼
+                Allure
+                   │
+                   ▼
+              QA Report
+                   │
+                   ▼
+                 Email

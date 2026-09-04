@@ -1,0 +1,257 @@
+{
+  "issueKey": "TEST-1",
+  "feature": "Login flow - ed-tech application (mobile number + OTP)",
+  "applicationUrl": "https://stg.zoworld.app/ed-tech/",
+  "requirementSource": {
+    "summary": "Login FLow Test cases",
+    "description": "Need to automate the login flow of ed-tech https://stg.zoworld.app/ed-tech/ . Give me test cases",
+    "acceptanceCriteria": []
+  },
+  "testCases": [
+    {
+      "id": "TC-001",
+      "title": "Login page loads with correct initial state",
+      "preconditions": ["Application URL is accessible"],
+      "testData": {},
+      "steps": [
+        "Navigate to https://stg.zoworld.app/ed-tech/"
+      ],
+      "expectedResult": "Page loads with: empty 'Mobile number' field, fixed '+91' country code prefix, unchecked 'I agree to the Terms & Conditions and Privacy Policy' checkbox, and a disabled 'Send OTP' button.",
+      "priority": "High",
+      "type": "positive",
+      "automationStatus": "Automatable"
+    },
+    {
+      "id": "TC-002",
+      "title": "Mobile number field accepts only numeric input",
+      "preconditions": ["Login page is loaded"],
+      "testData": { "input": "abcde12345" },
+      "steps": [
+        "Enter 'abcde12345' into the Mobile number field"
+      ],
+      "expectedResult": "Non-numeric characters are stripped; field value is '12345'.",
+      "priority": "Medium",
+      "type": "negative",
+      "automationStatus": "Automatable"
+    },
+    {
+      "id": "TC-003",
+      "title": "Mobile number field is capped at 10 digits",
+      "preconditions": ["Login page is loaded"],
+      "testData": { "input": "123456789012345" },
+      "steps": [
+        "Enter '123456789012345' (15 digits) into the Mobile number field"
+      ],
+      "expectedResult": "Field value is truncated to the first 10 digits: '1234567890'.",
+      "priority": "Medium",
+      "type": "boundary",
+      "automationStatus": "Automatable"
+    },
+    {
+      "id": "TC-004",
+      "title": "Send OTP remains disabled when Terms & Conditions checkbox is not checked",
+      "preconditions": ["Login page is loaded"],
+      "testData": { "mobileNumber": "9876543210" },
+      "steps": [
+        "Enter a valid 10-digit mobile number '9876543210'",
+        "Do not select the Terms & Conditions checkbox"
+      ],
+      "expectedResult": "Send OTP button remains disabled.",
+      "priority": "High",
+      "type": "negative",
+      "automationStatus": "Automatable"
+    },
+    {
+      "id": "TC-005",
+      "title": "Send OTP becomes enabled when mobile number is entered and checkbox is checked",
+      "preconditions": ["Login page is loaded"],
+      "testData": { "mobileNumber": "9876543210" },
+      "steps": [
+        "Enter a valid 10-digit mobile number '9876543210'",
+        "Select the Terms & Conditions checkbox"
+      ],
+      "expectedResult": "Send OTP button becomes enabled.",
+      "priority": "High",
+      "type": "positive",
+      "automationStatus": "Automatable"
+    },
+    {
+      "id": "TC-006",
+      "title": "Send OTP becomes disabled again when checkbox is unchecked",
+      "preconditions": ["Login page is loaded", "Mobile number entered and checkbox previously checked"],
+      "testData": { "mobileNumber": "9876543210" },
+      "steps": [
+        "Enter a valid 10-digit mobile number '9876543210'",
+        "Select the Terms & Conditions checkbox (button becomes enabled)",
+        "Deselect the Terms & Conditions checkbox"
+      ],
+      "expectedResult": "Send OTP button becomes disabled again.",
+      "priority": "High",
+      "type": "negative",
+      "automationStatus": "Automatable"
+    },
+    {
+      "id": "TC-007",
+      "title": "Send OTP is enabled even when mobile number has fewer than 10 digits (checkbox checked)",
+      "preconditions": ["Login page is loaded"],
+      "testData": { "mobileNumber": "98765" },
+      "steps": [
+        "Enter a partial mobile number '98765' (5 digits)",
+        "Select the Terms & Conditions checkbox"
+      ],
+      "expectedResult": "Observed: Send OTP button is enabled (no client-side minimum-length validation gates the button). Whether this is intended product behavior is UNKNOWN - see unknownBehavior.",
+      "priority": "Medium",
+      "type": "edge",
+      "automationStatus": "Automatable"
+    },
+    {
+      "id": "TC-008",
+      "title": "Send OTP is enabled even when mobile number field is empty (checkbox checked)",
+      "preconditions": ["Login page is loaded"],
+      "testData": { "mobileNumber": "" },
+      "steps": [
+        "Leave the Mobile number field empty",
+        "Select the Terms & Conditions checkbox"
+      ],
+      "expectedResult": "Observed: Send OTP button is enabled (no client-side required-field validation gates the button beyond the checkbox). Whether this is intended product behavior is UNKNOWN - see unknownBehavior.",
+      "priority": "Medium",
+      "type": "edge",
+      "automationStatus": "Automatable"
+    },
+    {
+      "id": "TC-009",
+      "title": "Terms & Conditions link points to the expected URL",
+      "preconditions": ["Login page is loaded"],
+      "testData": {},
+      "steps": [
+        "Locate the 'Terms & Conditions' link",
+        "Verify its href attribute without navigating away"
+      ],
+      "expectedResult": "Link href is 'https://in.zoworld.app/ed-tech/terms&condition'.",
+      "priority": "Low",
+      "type": "positive",
+      "automationStatus": "Automatable"
+    },
+    {
+      "id": "TC-010",
+      "title": "Privacy Policy link points to the expected URL",
+      "preconditions": ["Login page is loaded"],
+      "testData": {},
+      "steps": [
+        "Locate the 'Privacy Policy' link",
+        "Verify its href attribute without navigating away"
+      ],
+      "expectedResult": "Link href is 'https://in.zoworld.app/ed-tech/privacypolicy'.",
+      "priority": "Low",
+      "type": "positive",
+      "automationStatus": "Automatable"
+    },
+    {
+      "id": "TC-011",
+      "title": "Language toggle control is displayed on the login page",
+      "preconditions": ["Login page is loaded"],
+      "testData": {},
+      "steps": [
+        "Verify the 'English' button is visible near the top of the page"
+      ],
+      "expectedResult": "The 'English' language toggle button is displayed. Its underlying behavior (e.g. what languages it switches to) was not inspected and is UNKNOWN.",
+      "priority": "Low",
+      "type": "positive",
+      "automationStatus": "Automatable"
+    },
+    {
+      "id": "TC-012",
+      "title": "Send OTP triggers OTP delivery and navigates to OTP entry screen",
+      "preconditions": ["Login page is loaded", "Valid mobile number entered", "Checkbox checked"],
+      "testData": { "mobileNumber": "UNKNOWN - requires a real/QA-approved test number" },
+      "steps": [
+        "Click 'Send OTP'"
+      ],
+      "expectedResult": "UNKNOWN - not observed. Expected to trigger OTP delivery and display an OTP entry screen, but this was not verified to avoid triggering a real OTP.",
+      "priority": "High",
+      "type": "positive",
+      "automationStatus": "Blocked",
+      "blockedReason": "No QA OTP mechanism available; executing this step would trigger a real OTP send."
+    },
+    {
+      "id": "TC-013",
+      "title": "Login succeeds with a valid OTP",
+      "preconditions": ["OTP has been sent to a valid mobile number"],
+      "testData": { "otp": "UNKNOWN" },
+      "steps": [
+        "Enter the received OTP",
+        "Submit the OTP"
+      ],
+      "expectedResult": "UNKNOWN - post-verification success behavior (redirect target, session state) has not been observed or documented.",
+      "priority": "High",
+      "type": "positive",
+      "automationStatus": "Blocked",
+      "blockedReason": "No QA OTP mechanism available; requires a real OTP value that cannot be obtained or invented."
+    },
+    {
+      "id": "TC-014",
+      "title": "Login fails with an invalid/incorrect OTP",
+      "preconditions": ["OTP has been sent to a valid mobile number"],
+      "testData": { "otp": "UNKNOWN (invalid value)" },
+      "steps": [
+        "Enter an incorrect OTP",
+        "Submit the OTP"
+      ],
+      "expectedResult": "UNKNOWN - error message/behavior for invalid OTP has not been observed or documented.",
+      "priority": "High",
+      "type": "negative",
+      "automationStatus": "Blocked",
+      "blockedReason": "No QA OTP mechanism available; requires triggering a real OTP flow first."
+    },
+    {
+      "id": "TC-015",
+      "title": "Resend OTP functionality",
+      "preconditions": ["OTP has been sent to a valid mobile number"],
+      "testData": {},
+      "steps": [
+        "Wait for/locate a 'Resend OTP' option, if present",
+        "Trigger resend"
+      ],
+      "expectedResult": "UNKNOWN - existence, timer, and behavior of a resend mechanism have not been observed.",
+      "priority": "Medium",
+      "type": "positive",
+      "automationStatus": "Blocked",
+      "blockedReason": "No QA OTP mechanism available; OTP screen has not been reached without triggering a real OTP."
+    },
+    {
+      "id": "TC-016",
+      "title": "Login attempt with an unregistered mobile number",
+      "preconditions": ["Login page is loaded"],
+      "testData": { "mobileNumber": "UNKNOWN - requires a known-unregistered test number" },
+      "steps": [
+        "Enter an unregistered mobile number",
+        "Check the Terms & Conditions checkbox",
+        "Click 'Send OTP'"
+      ],
+      "expectedResult": "UNKNOWN - whether unregistered numbers are auto-registered or rejected has not been documented or observed.",
+      "priority": "Medium",
+      "type": "negative",
+      "automationStatus": "Blocked",
+      "blockedReason": "No QA OTP mechanism available; requires triggering a real OTP send and knowledge of registration status of a test number."
+    }
+  ],
+  "blockedScenarios": [
+    "TC-012: Send OTP triggers OTP delivery and navigates to OTP entry screen",
+    "TC-013: Login succeeds with a valid OTP",
+    "TC-014: Login fails with an invalid/incorrect OTP",
+    "TC-015: Resend OTP functionality",
+    "TC-016: Login attempt with an unregistered mobile number"
+  ],
+  "unknownBehavior": [
+    "Whether the missing client-side minimum-length validation on the mobile number field (observed in TC-007) is intended product behavior",
+    "Whether the missing client-side required-field validation on the mobile number field (observed in TC-008) is intended product behavior",
+    "Error/validation message shown (if any) when 'Send OTP' is clicked with an invalid or incomplete mobile number",
+    "OTP length, format, and expiry duration",
+    "OTP resend availability, cooldown/timer, and maximum resend attempts",
+    "Success behavior after valid OTP entry (redirect target, session/token issuance, welcome screen)",
+    "Failure behavior after invalid OTP entry (error message, remaining attempts, lockout policy)",
+    "Behavior for unregistered vs. registered mobile numbers (auto sign-up vs. rejection)",
+    "Functionality of the 'English' language toggle control",
+    "Whether a QA/staging OTP bypass or test hook exists for automation purposes"
+  ]
+}

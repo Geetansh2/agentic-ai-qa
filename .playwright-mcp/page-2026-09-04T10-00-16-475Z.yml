@@ -1,0 +1,24 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - button "English" [ref=e7] [cursor=pointer]
+    - heading "Tyaari ka king" [level=1] [ref=e10]
+    - paragraph [ref=e11]: Govt job prep, now like a game!
+    - img "Tayari Ka King mascot" [ref=e13]
+  - generic [ref=e14]:
+    - generic [ref=e15]:
+      - heading "Welcome! 👋" [level=2] [ref=e16]
+      - paragraph [ref=e17]: Enter your number
+    - generic [ref=e18]:
+      - generic [ref=e19]: 📱
+      - generic [ref=e20]: "+91"
+      - textbox "Mobile number" [ref=e21]
+    - generic [ref=e22] [cursor=pointer]:
+      - checkbox "I agree to the Terms & Conditions and Privacy Policy" [ref=e23]
+      - generic [ref=e24]:
+        - text: I agree to the
+        - link "Terms & Conditions" [ref=e25]:
+          - /url: https://in.zoworld.app/ed-tech/terms&condition
+        - text: and
+        - link "Privacy Policy" [ref=e26]:
+          - /url: https://in.zoworld.app/ed-tech/privacypolicy
+    - button "Send OTP" [disabled] [ref=e27]

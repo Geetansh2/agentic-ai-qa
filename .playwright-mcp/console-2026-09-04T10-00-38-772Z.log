@@ -1,0 +1,7 @@
+[      54ms] [LOG] [api] → GET /ed-tech/api//i18n/bundle headers= Ce @ https://stg.zoworld.app/ed-tech/assets/index-DHfZ18Wy.js:90
+[      54ms] [LOG] [api] → GET /ed-tech/api//i18n/locales headers= Ce @ https://stg.zoworld.app/ed-tech/assets/index-DHfZ18Wy.js:90
+[     160ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://stg.zoworld.app/favicon.ico:0
+[     184ms] [LOG] [api] ← GET /i18n/locales 200 headers= Ce @ https://stg.zoworld.app/ed-tech/assets/index-DHfZ18Wy.js:90
+[     184ms] [LOG] [api] → GET /ed-tech/api//i18n/bundle headers= Ce @ https://stg.zoworld.app/ed-tech/assets/index-DHfZ18Wy.js:90
+[     267ms] [LOG] [api] ← GET /i18n/bundle 200 headers= Ce @ https://stg.zoworld.app/ed-tech/assets/index-DHfZ18Wy.js:90
+[     424ms] [LOG] [api] ← GET /i18n/bundle 200 headers= Ce @ https://stg.zoworld.app/ed-tech/assets/index-DHfZ18Wy.js:90
