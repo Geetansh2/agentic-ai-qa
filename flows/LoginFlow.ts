@@ -15,10 +15,14 @@ export class LoginFlow {
   }
 
   async enterMobileAndAcceptTerms(
-    mobileNumber: any,
+    mobileNumber: string,
   ): Promise<void> {
     await this.loginPage.enterMobileNumber(mobileNumber);
     await this.loginPage.acceptTerms();
+  }
+
+  async enterMobileNumber(mobileNumber: string): Promise<void> {
+    await this.loginPage.enterMobileNumber(mobileNumber);
   }
 
   async isSendOtpEnabled(): Promise<boolean> {
