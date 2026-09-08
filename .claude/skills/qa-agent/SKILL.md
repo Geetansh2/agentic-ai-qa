@@ -458,6 +458,24 @@ Capture:
 * Environment
 * Browser
 
+
+Execution Scope Enforcement
+
+The agent MUST NOT execute the complete spec file when the workflow scope is ONE
+selected test case.
+
+If targeted execution does not produce the expected Allure result:
+
+1. Do NOT run the full spec as a fallback.
+2. Investigate the targeted execution command and reporter configuration.
+3. Retry the SAME selected test using an alternative targeted command if necessary.
+4. Preserve the one-test execution scope.
+5. If targeted execution cannot be completed reliably, classify the issue as:
+   REPORTING_CONFIGURATION_ISSUE
+   or
+   AUTOMATION_EXECUTION_ISSUE
+   depending on the evidence.
+6. Do not expand execution scope merely to generate reporting artifacts.
 ---
 
 # Phase 8 — Successful Execution
