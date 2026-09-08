@@ -28,4 +28,20 @@ export class LoginFlow {
   async isSendOtpEnabled(): Promise<boolean> {
     return this.loginPage.isSendOtpEnabled();
   }
+
+  async uncheckTerms(): Promise<void> {
+    await this.loginPage.uncheckTerms();
+  }
+
+  async getMobileNumberValue(): Promise<string> {
+    return this.loginPage.getMobileNumberValue();
+  }
+
+  async getCountryCodePrefix(): Promise<string> {
+    return this.loginPage.getCountryCodePrefix();
+  }
+
+  async isTermsChecked(): Promise<boolean> {
+    return this.loginPage.isTermsChecked();
+  }
 }

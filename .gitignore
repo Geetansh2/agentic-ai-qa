@@ -1,3 +1,6 @@
 .env
 .env.*
 !.env.example
+
+allure-report.*
+allure-report
