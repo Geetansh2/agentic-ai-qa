@@ -436,8 +436,21 @@ Prefer targeted Playwright execution.
 Example:
 
 ```text
-npx playwright test <specific-test-file> -g "<selected-test-name>"
+npx playwright test <specific-test-file> -g "<selected-test-name>" --workers=1
 ```
+
+Or, using the project's targeted npm script (which already pins `--workers=1`):
+
+```text
+npm run test:single -- <specific-test-file> -g "<selected-test-name>"
+```
+
+Agent-targeted execution MUST always pass `--workers=1` explicitly (via the
+`test:single` script or the `--workers=1` flag), regardless of the
+`PLAYWRIGHT_WORKERS` environment variable or local/CI default worker count
+configured in `playwright.config.ts`. Parallel worker configuration is only
+for suite/regression execution (e.g. `npm run test:parallel`) and must never
+cause more than one test to execute during a one-test agent run.
 
 Use the project's existing test commands where applicable.
 

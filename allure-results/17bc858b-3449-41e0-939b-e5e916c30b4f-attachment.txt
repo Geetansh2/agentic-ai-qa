@@ -1,0 +1,3 @@
+[Worker 3] [firefox] STARTED: TC-005 - valid mobile + terms enables Send OTP
+ed-tech
+[Worker 3] [firefox] FINISHED: TC-005 - valid mobile + terms enables Send OTP

@@ -1,0 +1,3 @@
+[Worker 4] [webkit] STARTED: TC-001 - Login page loads with correct initial state
+ed-tech
+[Worker 4] [webkit] FINISHED: TC-001 - Login page loads with correct initial state
