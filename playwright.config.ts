@@ -11,5 +11,5 @@ export default defineConfig({
     video: 'retain-on-failure',
   },
 
-  reporter: [['list']],
+  reporter: [['list'],  ['allure-playwright']],
 });

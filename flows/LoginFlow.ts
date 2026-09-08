@@ -28,4 +28,8 @@ export class LoginFlow {
   async isSendOtpEnabled(): Promise<boolean> {
     return this.loginPage.isSendOtpEnabled();
   }
+
+  async uncheckTerms(): Promise<void> {
+    await this.loginPage.uncheckTerms();
+  }
 }
