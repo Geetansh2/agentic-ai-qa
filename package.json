@@ -6,6 +6,8 @@
   "scripts": {
   "test": "playwright test",
   "test:qa": "ENV=qa playwright test",
+  "test:parallel": "ENV=qa PLAYWRIGHT_WORKERS=${PLAYWRIGHT_WORKERS:-2} playwright test",
+  "test:single": "ENV=qa playwright test --workers=1",
   "allure:generate": "allure generate allure-results --clean -o allure-report",
   "allure:open": "allure open allure-report"
 },
