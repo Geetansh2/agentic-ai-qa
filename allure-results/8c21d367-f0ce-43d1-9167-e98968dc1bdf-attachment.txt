@@ -1,0 +1,3 @@
+[Worker 3] [firefox] STARTED: TC-006 - Send OTP becomes disabled again when checkbox is unchecked
+ed-tech
+[Worker 3] [firefox] FINISHED: TC-006 - Send OTP becomes disabled again when checkbox is unchecked

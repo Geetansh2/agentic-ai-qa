@@ -1,0 +1,3 @@
+[Worker 4] [webkit] STARTED: TC-002 - Mobile number field accepts only numeric input
+ed-tech
+[Worker 4] [webkit] FINISHED: TC-002 - Mobile number field accepts only numeric input

@@ -1,0 +1,3 @@
+[Worker 3] [firefox] STARTED: TC-004 - Send OTP remains disabled without terms acceptance
+ed-tech
+[Worker 3] [firefox] FINISHED: TC-004 - Send OTP remains disabled without terms acceptance

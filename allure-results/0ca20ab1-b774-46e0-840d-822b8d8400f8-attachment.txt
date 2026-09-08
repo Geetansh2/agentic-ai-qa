@@ -1,0 +1,3 @@
+[Worker 5] [webkit] STARTED: TC-005 - valid mobile + terms enables Send OTP
+ed-tech
+[Worker 5] [webkit] FINISHED: TC-005 - valid mobile + terms enables Send OTP

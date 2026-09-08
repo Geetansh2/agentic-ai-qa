@@ -14,10 +14,18 @@ export const test = base.extend<Fixtures>({
         await use(testData);
     },
 
-    loginFlow: async ({ page }, use) => {
+    loginFlow: async ({ page }, use, testInfo) => {
+                console.log(
+            `[Worker ${testInfo.workerIndex}] [${testInfo.project.name}] STARTED: ${testInfo.title}`
+        );
+
+
     const loginFlow = new LoginFlow(page);
 
     await use(loginFlow);
+    console.log(
+            `[Worker ${testInfo.workerIndex}] [${testInfo.project.name}] FINISHED: ${testInfo.title}`
+        );
 },
 });
 
