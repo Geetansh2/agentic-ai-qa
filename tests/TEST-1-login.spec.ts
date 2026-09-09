@@ -1,5 +1,18 @@
 import { test, expect } from '../fixtures/test.fixture';
 
+test.beforeEach(async ({}, testInfo) =>{
+  console.log(
+        `[HOOK] BEFORE EACH: ${testInfo.title}`
+    );
+
+})
+test.afterEach(async ({}, testInfo) => {
+    console.log(
+        `[HOOK] AFTER EACH: ${testInfo.title} - ${testInfo.status}`
+    );
+});
+
+
 test('TC-001 - Login page loads with correct initial state', async ({
   loginFlow,
 }) => {

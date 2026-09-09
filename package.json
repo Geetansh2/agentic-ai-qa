@@ -4,12 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "test": "playwright test",
-  "test:qa": "ENV=qa playwright test",
-  "test:parallel": "ENV=qa playwright test",
-  "test:single": "ENV=qa playwright test --workers=1",
-  "allure:generate": "allure generate allure-results --clean -o allure-report",
-  "allure:open": "allure open allure-report"
+    "test:qa": "ENV=qa playwright test",
+    "test:uat": "ENV=uat playwright test",
+
+    "test:qa:chromium": "ENV=qa playwright test --project=chromium",
+    "test:qa:firefox": "ENV=qa playwright test --project=firefox",
+    "test:qa:webkit": "ENV=qa playwright test --project=webkit",
+
+    "test:uat:chromium": "ENV=uat playwright test --project=chromium",
+    "test:uat:firefox": "ENV=uat playwright test --project=firefox",
+    "test:uat:webkit": "ENV=uat playwright test --project=webkit",
+  
+    "test:parallel": "ENV=qa playwright test",
+    "test:single": "ENV=qa playwright test --workers=1",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report"
 },
   "keywords": [],
   "author": "",

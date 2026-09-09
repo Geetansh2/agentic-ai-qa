@@ -1,0 +1,5 @@
+[Worker 0][chromium]STARTED: TC-002 - Mobile number field accepts only numeric input
+[HOOK] BEFORE EACH: TC-002 - Mobile number field accepts only numeric input
+ed-tech
+[HOOK] AFTER EACH: TC-002 - Mobile number field accepts only numeric input - passed
+[Worker 0] [chromium] FINISHED: TC-002 - Mobile number field accepts only numeric input (1821ms)
