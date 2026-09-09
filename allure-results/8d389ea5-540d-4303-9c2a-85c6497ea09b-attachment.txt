@@ -1,0 +1,3 @@
+[Worker 0][chromium]STARTED: TC-005 - valid mobile + terms enables Send OTP
+ed-tech
+[Worker 0] [chromium] FINISHED: TC-005 - valid mobile + terms enables Send OTP (1387ms)

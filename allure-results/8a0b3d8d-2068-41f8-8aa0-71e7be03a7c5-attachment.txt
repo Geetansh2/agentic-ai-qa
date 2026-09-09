@@ -1,0 +1,5 @@
+[Worker 0][chromium]STARTED: TC-001 - Login page loads with correct initial state
+[HOOK] BEFORE EACH: TC-001 - Login page loads with correct initial state
+ed-tech
+[HOOK] AFTER EACH: TC-001 - Login page loads with correct initial state - passed
+[Worker 0] [chromium] FINISHED: TC-001 - Login page loads with correct initial state (2402ms)

@@ -23,6 +23,8 @@ export default defineConfig({
 // fullyParallel: true,
   workers,
   retries: 0,
+  globalSetup: require.resolve('./listeners/globalSetup'),
+  globalTeardown: [require.resolve('./listeners/globalTeardown')],
 
   use: {
     baseURL: envConfig.baseURL,
@@ -54,5 +56,5 @@ export default defineConfig({
     },
   ],
 
-  reporter: [['list'], ['allure-playwright']],
+  reporter: [['list'], ['allure-playwright'], ['./listeners/ExecutionReporter.ts']],
 });

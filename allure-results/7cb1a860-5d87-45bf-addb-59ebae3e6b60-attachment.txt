@@ -1,0 +1,3 @@
+[Worker 0][chromium]STARTED: TC-004 - Send OTP remains disabled without terms acceptance
+ed-tech
+[Worker 0] [chromium] FINISHED: TC-004 - Send OTP remains disabled without terms acceptance (1882ms)
