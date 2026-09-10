@@ -1,0 +1,2 @@
+[Worker 0][chromium]STARTED: TC-005-HYBRID - API + UI login validation
+[Worker 0] [chromium] FINISHED: TC-005-HYBRID - API + UI login validation (1526ms)
