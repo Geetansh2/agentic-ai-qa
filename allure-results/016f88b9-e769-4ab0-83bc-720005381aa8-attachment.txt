@@ -1,0 +1,5 @@
+UI Plan: {
+  strategy: 'ui-only',
+  executionType: 'ui',
+  components: [ 'Page Object', 'Business Flow', 'Playwright Test' ]
+}

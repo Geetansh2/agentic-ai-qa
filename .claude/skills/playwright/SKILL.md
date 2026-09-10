@@ -240,6 +240,103 @@ If an automation test fails:
 
 ---
 
+---
+
+## Agent Automation Workflow
+
+When the agent selects a test case for automation:
+
+1. Verify the selected test case has:
+   `automationStatus: "Automatable"`.
+
+2. Check the existing `tests/` directory for an existing test
+   with the same test case ID.
+
+3. If the test already exists:
+   - Do not create a duplicate test.
+   - Reuse or update the existing automation only when required.
+
+4. If the test does not exist:
+   - Inspect the existing Page Objects.
+   - Inspect the existing Business Flows.
+   - Inspect the existing fixtures.
+   - Reuse existing framework components whenever possible.
+
+5. If an existing Page Object is missing a required locator or
+   getter:
+   - Add the smallest necessary change to the Page Object.
+   - Do not bypass the Page Object layer from the test.
+
+6. If an existing Business Flow can support the test:
+   - Reuse the Business Flow.
+   - Add a small reusable method only when required.
+
+7. Create the Playwright test under `tests/`.
+
+8. Include the test case ID in the test title.
+
+9. The generated test must:
+   - Use existing fixtures.
+   - Use Page Objects and Business Flows.
+   - Follow the locator rules defined by this Skill.
+   - Contain meaningful assertions.
+   - Avoid real OTP/SMS.
+   - Avoid sensitive test data.
+
+10. Before execution, verify that the generated test can be
+    uniquely selected using its test case ID.
+
+11. Execute only the selected test case using:
+
+    `--workers=1`
+
+12. Do not generate or modify unrelated test cases.
+
+---
+
+## Framework Reuse Rules
+
+The agent must prefer the existing framework over creating new
+automation infrastructure.
+
+Reuse in this order:
+
+1. Existing Page Objects
+2. Existing Business Flows
+3. Existing Components
+4. Existing Fixtures
+5. Existing API services
+6. New framework code only when necessary
+
+Do not create duplicate Page Objects, flows, fixtures, or API clients.
+
+---
+
+## Automation Scope
+
+For an agent automation task:
+
+- Automate ONE selected test case at a time.
+- Do not automatically automate every candidate.
+- Do not modify unrelated tests.
+- Do not weaken assertions to make a test pass.
+- Do not change business requirements.
+- Do not bypass existing framework architecture.
+
+---
+
+## Automation Verification
+
+After creating automation, verify:
+
+1. The test file exists.
+2. The test case ID exists in the test title.
+3. Playwright can discover the test.
+4. The selected test can be executed independently.
+5. The test result is either `passed` or a failure that must be
+   investigated by the Failure Analysis skill.A
+
+
 ## Completion
 
 Playwright automation is complete when:

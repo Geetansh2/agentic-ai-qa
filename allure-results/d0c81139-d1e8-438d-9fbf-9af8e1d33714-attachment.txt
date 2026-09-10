@@ -1,0 +1,5 @@
+API Plan: {
+  strategy: 'api-only',
+  executionType: 'api',
+  components: [ 'ApiClient', 'API Service', 'Playwright API Test' ]
+}

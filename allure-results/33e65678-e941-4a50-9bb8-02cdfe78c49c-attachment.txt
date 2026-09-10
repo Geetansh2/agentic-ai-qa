@@ -1,0 +1,76 @@
+
+[AGENT] Starting automation planning for TEST-1
+[AGENT] TC-001: ALREADY AUTOMATED → SKIP
+[AGENT] TC-002: ALREADY AUTOMATED → SKIP
+[AGENT] TC-003: ALREADY AUTOMATED → SKIP
+[AGENT] TC-004: ALREADY AUTOMATED → SKIP
+[AGENT] TC-005: ALREADY AUTOMATED → SKIP
+[AGENT] TC-006: ALREADY AUTOMATED → SKIP
+[AGENT] TC-007: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-008: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-009: ALREADY AUTOMATED → SKIP
+[AGENT] TC-010: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-011: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-012: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-013: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-014: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-015: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-016: NOT AUTOMATED → CANDIDATE
+[TEST CASE SELECTOR] Candidates: 9
+[AGENT] LLM selected test case: TC-010
+[AGENT] Selection reason: Checks the Privacy Policy link href against a known URL — deterministic, no side-effects, and easily automated by inspecting the anchor's href attribute without navigation.
+[AUTOMATION PLANNER] Strategy: ui-only
+[AUTOMATION PLANNER] Reason: The test verifies a DOM attribute on the login page (the link's href) without requiring backend calls or navigation; it can be validated entirely via UI automation (e.g., Selenium) by inspecting the element's href.
+[AGENT] Strategy: ui-only
+[AGENT] Execution type: ui
+[AGENT] Components: Page Object, Business Flow, Playwright Test
+
+[AGENT] Automation task created: {
+  "jiraIssueKey": "TEST-1",
+  "testCaseId": "TC-010",
+  "testCase": {
+    "id": "TC-010",
+    "title": "Privacy Policy link points to the expected URL",
+    "preconditions": [
+      "Login page is loaded"
+    ],
+    "testData": {},
+    "steps": [
+      "Locate the 'Privacy Policy' link",
+      "Verify its href attribute without navigating away"
+    ],
+    "expectedResult": "Link href is 'https://in.zoworld.app/ed-tech/privacypolicy'.",
+    "priority": "Low",
+    "type": "positive",
+    "automationStatus": "Automatable"
+  },
+  "strategy": "ui-only",
+  "executionType": "ui",
+  "components": [
+    "Page Object",
+    "Business Flow",
+    "Playwright Test"
+  ]
+}
+
+FINAL AGENT TASK: {
+  jiraIssueKey: 'TEST-1',
+  testCaseId: 'TC-010',
+  testCase: {
+    id: 'TC-010',
+    title: 'Privacy Policy link points to the expected URL',
+    preconditions: [ 'Login page is loaded' ],
+    testData: {},
+    steps: [
+      "Locate the 'Privacy Policy' link",
+      'Verify its href attribute without navigating away'
+    ],
+    expectedResult: "Link href is 'https://in.zoworld.app/ed-tech/privacypolicy'.",
+    priority: 'Low',
+    type: 'positive',
+    automationStatus: 'Automatable'
+  },
+  strategy: 'ui-only',
+  executionType: 'ui',
+  components: [ 'Page Object', 'Business Flow', 'Playwright Test' ]
+}

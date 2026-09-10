@@ -1,0 +1,27 @@
+
+[PLAYWRIGHT AGENT] Generating automation for TC-009
+[PLAYWRIGHT AGENT] Loading Skill: /Users/geetansh/Documents/agentic-ai-qa/.claude/skills/playwright/SKILL.md
+[PROJECT INSPECTOR] Searching for: 009, Terms, Conditions, link, points, the, expected, URL, Login, page, loaded, Locate, Verify, its, href, attribute, without, navigating, away, Link, https:, zoworld, app, tech, terms&condition, Low, positive, Automatable
+[PROJECT INSPECTOR] Discovered 54 project files
+[PROJECT INSPECTOR] Relevant files:
+  - tests/PlaywrightAutomationAgent.spec.ts
+  - flows/LoginFlow.ts
+  - pages/LoginPage.ts
+  - tests/TEST-1-login.spec.ts
+  - flows/AuthenticationFlow.ts
+  - tests/TEST-2-login.spec.ts
+  - agent/PlaywrightAutomationAgent.ts
+  - tests/TEST-3-login-hybrid.spec.ts
+  - config/prod.config.ts
+  - config/qa.config.ts
+[PLAYWRIGHT AGENT] Test case: TC-009
+[PLAYWRIGHT AGENT] Target file: tests/TEST-1-login.spec.ts
+[PLAYWRIGHT AGENT] Reason: Adds a UI test that reuses existing LoginFlow, locates the Terms & Conditions link by role, and asserts its href equals the expected URL without navigation.
+
+[GENERATED PLAYWRIGHT PROPOSAL]
+{
+  "file": "tests/TEST-1-login.spec.ts",
+  "testCaseId": "TC-009",
+  "code": "import { test, expect } from '../fixtures/test.fixture';\n\ntest.beforeEach(async ({}, testInfo) =>{\n  console.log(\n        `[HOOK] BEFORE EACH: ${testInfo.title}`\n    );\n\n})\ntest.afterEach(async ({}, testInfo) => {\n    console.log(\n        `[HOOK] AFTER EACH: ${testInfo.title} - ${testInfo.status}`\n    );\n});\n\n\ntest('TC-001 - Login page loads with correct initial state', async ({\n  loginFlow,\n}) => {\n  \n  await loginFlow.open();\n\n  expect(await loginFlow.getMobileNumberValue()).toBe('');\n  expect(await loginFlow.getCountryCodePrefix()).toBe('+91');\n  expect(await loginFlow.isTermsChecked()).toBe(false);\n  expect(await loginFlow.isSendOtpEnabled()).toBe(false);\n});\n\ntest('TC-002 - Mobile number field accepts only numeric input', async ({\n  loginFlow,\n  testData,\n}) => {\n  await loginFlow.open();\n\n  const loginData = testData.login<{\n    nonNumericMobile: string;\n  }>();\n\n  await loginFlow.enterMobileNumber(loginData.nonNumericMobile);\n\n  expect(await loginFlow.getMobileNumberValue()).toBe('12345');\n});\n\n// test('TC-004 - Send OTP remains disabled without terms acceptance', async ({\n//   loginFlow,\n//   testData,\n// }) => {\n//   await loginFlow.open();\n\n//   const loginData = testData.login<{\n//     validMobile: string;\n//   }>();\n\n//   await loginFlow.enterMobileNumber(loginData.validMobile);\n\n//   expect(await loginFlow.isSendOtpEnabled()).toBe(false);\n// });\n\n// test('TC-005 - valid mobile + terms enables Send OTP', async ({\n//   loginFlow,\n//   testData,\n// }) => {\n//   await loginFlow.open();\n\n//   const loginData = testData.login<{\n//     validMobile: string;\n//   }>();\n\n//   await loginFlow.enterMobileAndAcceptTerms(\n//     loginData.validMobile,\n//   );\n\n//   expect(await loginFlow.isSendOtpEnabled()).toBe(true);\n// });\n\n// test('TC-006 - Send OTP becomes disabled again when checkbox is unchecked', async ({\n//   loginFlow,\n//   testData,\n// }) => {\n//   await loginFlow.open();\n\n//   const loginData = testData.login<{\n//     validMobile: string;\n//   }>();\n\n//   await loginFlow.enterMobileAndAcceptTerms(\n//     loginData.validMobile,\n//   );\n\n//   expect(await loginFlow.isSendOtpEnabled()).toBe(true);\n\n//   await loginFlow.uncheckTerms();\n\n//   expect(await loginFlow.isSendOtpEnabled()).toBe(false);\n// });\n\n// TC-009 - Terms & Conditions link points to the expected URL\ntest('TC-009 - Terms & Conditions link points to the expected URL', async ({\n  loginFlow,\n  page,\n}) => {\n  // Start from the known login page state\n  await loginFlow.open();\n\n  // Locate the Terms & Conditions link using an accessible role-based locator\n  const termsLink = page.getByRole('link', { name: /terms\\s*&\\s*conditions/i });\n\n  // Verify the href attribute without navigating away\n  await expect(termsLink).toHaveAttribute(\n    'href',\n    'https://in.zoworld.app/ed-tech/terms&condition'\n  );\n});\n",
+  "reason": "Adds a UI test that reuses existing LoginFlow, locates the Terms & Conditions link by role, and asserts its href equals the expected URL without navigation."
+}

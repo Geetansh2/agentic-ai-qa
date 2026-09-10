@@ -92,3 +92,17 @@ test('TC-002 - Mobile number field accepts only numeric input', async ({
 
 //   expect(await loginFlow.isSendOtpEnabled()).toBe(false);
 // });
+
+test('TC-010 - Privacy Policy link points to the expected URL', async ({ loginFlow, page }) => {
+  // Precondition: Login page is loaded
+  await loginFlow.open();
+
+  // Locate the 'Privacy Policy' link using a role-based locator
+  const privacyLink = page.getByRole('link', { name: /privacy policy/i });
+
+  // Verify its href attribute without navigating away
+  await expect(privacyLink).toHaveAttribute(
+    'href',
+    'https://in.zoworld.app/ed-tech/privacypolicy'
+  );
+});

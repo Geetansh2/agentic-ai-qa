@@ -1,0 +1,32 @@
+
+[AGENT] Starting automation planning for TEST-1
+[AGENT] TC-001: ALREADY AUTOMATED → SKIP
+[AGENT] TC-002: ALREADY AUTOMATED → SKIP
+[AGENT] TC-003: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-004: ALREADY AUTOMATED → SKIP
+[AGENT] TC-005: ALREADY AUTOMATED → SKIP
+[AGENT] TC-006: ALREADY AUTOMATED → SKIP
+[AGENT] TC-007: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-008: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-009: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-010: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-011: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-012: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-013: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-014: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-015: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-016: NOT AUTOMATED → CANDIDATE
+[TEST CASE SELECTOR] Candidates: 11
+[AGENT] LLM selected test case: TC-003
+[AGENT] Selection reason: Validates boundary enforcement for the mobile number field—ensures input is truncated to 10 digits; automatable and important for input validation.
+[AUTOMATION PLANNER] Strategy: ui-only
+[AUTOMATION PLANNER] Reason: This verifies client-side input validation/truncation of the mobile field visible in the UI; no backend/API interaction is required.
+[AGENT] Strategy: ui-only
+[AGENT] Execution type: ui
+[AGENT] Components: Page Object, Business Flow, Playwright Test
+
+FINAL AGENT PLAN: {
+  strategy: 'ui-only',
+  executionType: 'ui',
+  components: [ 'Page Object', 'Business Flow', 'Playwright Test' ]
+}

@@ -1,0 +1,6 @@
+[AUTOMATION PLANNER] Strategy: api-ui-hybrid
+[AUTOMATION PLANNER] Reason: The test sends the OTP via the API but requires validating the OTP delivery/behavior in the UI, so both backend interaction and UI verification are needed.
+Automation Plan: {
+  strategy: 'api-ui-hybrid',
+  reason: 'The test sends the OTP via the API but requires validating the OTP delivery/behavior in the UI, so both backend interaction and UI verification are needed.'
+}

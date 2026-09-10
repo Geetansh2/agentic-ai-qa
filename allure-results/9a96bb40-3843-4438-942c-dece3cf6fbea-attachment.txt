@@ -1,0 +1,4 @@
+SELECTED TEST CASE: {
+  id: 'TC-001',
+  reason: "High-priority, deterministic UI verification with no external dependencies — load the login page and assert initial element states (empty mobile field, fixed '+91' prefix, unchecked T&C checkbox, and disabled Send OTP) which is straightforward to automate with Playwright."
+}

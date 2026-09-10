@@ -1,0 +1,5 @@
+[Worker 0][chromium]STARTED: TC-010 - Privacy Policy link points to the expected URL
+[HOOK] BEFORE EACH: TC-010 - Privacy Policy link points to the expected URL
+ed-tech
+[HOOK] AFTER EACH: TC-010 - Privacy Policy link points to the expected URL - passed
+[Worker 0] [chromium] FINISHED: TC-010 - Privacy Policy link points to the expected URL (3972ms)

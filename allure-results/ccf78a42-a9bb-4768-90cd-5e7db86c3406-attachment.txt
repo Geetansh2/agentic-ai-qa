@@ -1,0 +1,27 @@
+
+[PLAYWRIGHT AGENT] Generating automation for TC-009
+[PLAYWRIGHT AGENT] Loading Skill: /Users/geetansh/Documents/agentic-ai-qa/.claude/skills/playwright/SKILL.md
+[PROJECT INSPECTOR] Searching for: 009, Terms, Conditions, link, points, the, expected, URL, Login, page, loaded, Locate, Verify, its, href, attribute, without, navigating, away, Link, https:, zoworld, app, tech, terms&condition, Low, positive, Automatable
+[PROJECT INSPECTOR] Discovered 54 project files
+[PROJECT INSPECTOR] Relevant files:
+  - tests/PlaywrightAutomationAgent.spec.ts
+  - flows/LoginFlow.ts
+  - pages/LoginPage.ts
+  - tests/TEST-1-login.spec.ts
+  - flows/AuthenticationFlow.ts
+  - tests/TEST-2-login.spec.ts
+  - agent/PlaywrightAutomationAgent.ts
+  - tests/TEST-3-login-hybrid.spec.ts
+  - config/prod.config.ts
+  - config/qa.config.ts
+[PLAYWRIGHT AGENT] Test case: TC-009
+[PLAYWRIGHT AGENT] Target file: tests/TEST-1-login.spec.ts
+[PLAYWRIGHT AGENT] Reason: Opens the login page via existing loginFlow, locates the Terms & Conditions link using a stable role-based locator, and asserts the href matches the expected URL without navigating away.
+
+[GENERATED PLAYWRIGHT PROPOSAL]
+{
+  "file": "tests/TEST-1-login.spec.ts",
+  "testCaseId": "TC-009",
+  "code": "test('TC-009 - Terms & Conditions link points to the expected URL', async ({ loginFlow, page }) => {\n  // precondition: login page is loaded\n  await loginFlow.open();\n\n  // locate the Terms & Conditions link and verify its href without navigating\n  const termsLink = page.getByRole('link', { name: /terms.*conditions/i });\n  const href = await termsLink.getAttribute('href');\n\n  expect(href).toBe('https://in.zoworld.app/ed-tech/terms&condition');\n});",
+  "reason": "Opens the login page via existing loginFlow, locates the Terms & Conditions link using a stable role-based locator, and asserts the href matches the expected URL without navigating away."
+}

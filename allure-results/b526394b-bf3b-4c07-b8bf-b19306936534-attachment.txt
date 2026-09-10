@@ -1,0 +1,6 @@
+[AUTOMATION PLANNER] Strategy: ui-only
+[AUTOMATION PLANNER] Reason: Test verifies presence of UI elements (mobile number field and Send OTP button) on the login page and requires no backend/API interaction.
+Automation Plan: {
+  strategy: 'ui-only',
+  reason: 'Test verifies presence of UI elements (mobile number field and Send OTP button) on the login page and requires no backend/API interaction.'
+}
