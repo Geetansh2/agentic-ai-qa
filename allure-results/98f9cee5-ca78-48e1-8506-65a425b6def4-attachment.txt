@@ -1,0 +1,3 @@
+[Worker 0][chromium]STARTED: TC-005-HYBRID - API + UI login validation
+ed-tech
+[Worker 0] [chromium] FINISHED: TC-005-HYBRID - API + UI login validation (2643ms)

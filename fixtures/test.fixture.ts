@@ -2,11 +2,13 @@ import {test as base} from '@playwright/test';
 
 import { TestDataProvider } from '../data/TestDataProvider';
 import { LoginFlow } from '../flows/LoginFlow';
+import { LoginApi } from '../api/LoginApi';
 
 type Fixtures = {
     testData: TestDataProvider;
     loginFlow: LoginFlow;
     lifecycle: void;
+    loginApi: LoginApi;
 };
 
 export const test = base.extend<Fixtures>({
@@ -18,7 +20,11 @@ export const test = base.extend<Fixtures>({
     loginFlow: async ({ page }, use) => {
     const loginFlow = new LoginFlow(page);
     await use(loginFlow);
-},
+    },
+    loginApi: async({request}, use)=>{
+        const loginApi = new LoginApi(request);
+        await use(loginApi);
+    },
 
 lifecycle:[
     async({}, use, testInfo) =>{
