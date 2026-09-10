@@ -1,0 +1,6 @@
+[AUTOMATION PLANNER] Strategy: api-only
+[AUTOMATION PLANNER] Reason: The test explicitly verifies the login API endpoint response, which is a backend behavior that can be validated via direct API calls without involving the UI.
+Automation Plan: {
+  strategy: 'api-only',
+  reason: 'The test explicitly verifies the login API endpoint response, which is a backend behavior that can be validated via direct API calls without involving the UI.'
+}

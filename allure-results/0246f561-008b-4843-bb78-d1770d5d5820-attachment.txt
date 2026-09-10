@@ -1,0 +1,76 @@
+
+[AGENT] Starting automation planning for TEST-1
+[AGENT] TC-001: ALREADY AUTOMATED → SKIP
+[AGENT] TC-002: ALREADY AUTOMATED → SKIP
+[AGENT] TC-003: ALREADY AUTOMATED → SKIP
+[AGENT] TC-004: ALREADY AUTOMATED → SKIP
+[AGENT] TC-005: ALREADY AUTOMATED → SKIP
+[AGENT] TC-006: ALREADY AUTOMATED → SKIP
+[AGENT] TC-007: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-008: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-009: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-010: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-011: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-012: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-013: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-014: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-015: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-016: NOT AUTOMATED → CANDIDATE
+[TEST CASE SELECTOR] Candidates: 10
+[AGENT] LLM selected test case: TC-009
+[AGENT] Selection reason: Simple, automatable DOM assertion to verify the Terms & Conditions link href without navigation—low risk and reliable to automate.
+[AUTOMATION PLANNER] Strategy: ui-only
+[AUTOMATION PLANNER] Reason: The test validates a DOM attribute (the href of the Terms & Conditions link) on the loaded login page, which can be asserted via the UI without any backend/API interactions.
+[AGENT] Strategy: ui-only
+[AGENT] Execution type: ui
+[AGENT] Components: Page Object, Business Flow, Playwright Test
+
+[AGENT] Automation task created: {
+  "jiraIssueKey": "TEST-1",
+  "testCaseId": "TC-009",
+  "testCase": {
+    "id": "TC-009",
+    "title": "Terms & Conditions link points to the expected URL",
+    "preconditions": [
+      "Login page is loaded"
+    ],
+    "testData": {},
+    "steps": [
+      "Locate the 'Terms & Conditions' link",
+      "Verify its href attribute without navigating away"
+    ],
+    "expectedResult": "Link href is 'https://in.zoworld.app/ed-tech/terms&condition'.",
+    "priority": "Low",
+    "type": "positive",
+    "automationStatus": "Automatable"
+  },
+  "strategy": "ui-only",
+  "executionType": "ui",
+  "components": [
+    "Page Object",
+    "Business Flow",
+    "Playwright Test"
+  ]
+}
+
+FINAL AGENT TASK: {
+  jiraIssueKey: 'TEST-1',
+  testCaseId: 'TC-009',
+  testCase: {
+    id: 'TC-009',
+    title: 'Terms & Conditions link points to the expected URL',
+    preconditions: [ 'Login page is loaded' ],
+    testData: {},
+    steps: [
+      "Locate the 'Terms & Conditions' link",
+      'Verify its href attribute without navigating away'
+    ],
+    expectedResult: "Link href is 'https://in.zoworld.app/ed-tech/terms&condition'.",
+    priority: 'Low',
+    type: 'positive',
+    automationStatus: 'Automatable'
+  },
+  strategy: 'ui-only',
+  executionType: 'ui',
+  components: [ 'Page Object', 'Business Flow', 'Playwright Test' ]
+}

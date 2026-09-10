@@ -1,0 +1,131 @@
+
+========================================
+[AGENT] Starting autonomous QA workflow: TEST-1
+========================================
+
+
+[AGENT] Starting automation planning for TEST-1
+[AGENT] TC-001: ALREADY AUTOMATED → SKIP
+[AGENT] TC-002: ALREADY AUTOMATED → SKIP
+[AGENT] TC-003: ALREADY AUTOMATED → SKIP
+[AGENT] TC-004: ALREADY AUTOMATED → SKIP
+[AGENT] TC-005: ALREADY AUTOMATED → SKIP
+[AGENT] TC-006: ALREADY AUTOMATED → SKIP
+[AGENT] TC-007: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-008: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-009: ALREADY AUTOMATED → SKIP
+[AGENT] TC-010: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-011: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-012: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-013: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-014: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-015: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-016: NOT AUTOMATED → CANDIDATE
+[TEST CASE SELECTOR] Candidates: 9
+[AGENT] LLM selected test case: TC-010
+[AGENT] Selection reason: Checks Privacy Policy link href equals the known URL; deterministic, automatable, and low-risk to validate without navigation.
+[AUTOMATION PLANNER] Strategy: ui-only
+[AUTOMATION PLANNER] Reason: The test verifies a DOM attribute (href) on the login page without navigation or backend interaction, so it can be fully validated via the UI.
+[AGENT] Strategy: ui-only
+[AGENT] Execution type: ui
+[AGENT] Components: Page Object, Business Flow, Playwright Test
+
+[AGENT] Automation task created: {
+  "jiraIssueKey": "TEST-1",
+  "testCaseId": "TC-010",
+  "testCase": {
+    "id": "TC-010",
+    "title": "Privacy Policy link points to the expected URL",
+    "preconditions": [
+      "Login page is loaded"
+    ],
+    "testData": {},
+    "steps": [
+      "Locate the 'Privacy Policy' link",
+      "Verify its href attribute without navigating away"
+    ],
+    "expectedResult": "Link href is 'https://in.zoworld.app/ed-tech/privacypolicy'.",
+    "priority": "Low",
+    "type": "positive",
+    "automationStatus": "Automatable"
+  },
+  "strategy": "ui-only",
+  "executionType": "ui",
+  "components": [
+    "Page Object",
+    "Business Flow",
+    "Playwright Test"
+  ]
+}
+
+[AGENT] Generating automation for TC-010
+
+[PLAYWRIGHT AGENT] Generating automation for TC-010
+[PLAYWRIGHT AGENT] Loading Skill: /Users/geetansh/Documents/agentic-ai-qa/.claude/skills/playwright/SKILL.md
+[PROJECT INSPECTOR] Searching for: 010, Privacy, Policy, link, points, the, expected, URL, Login, page, loaded, Locate, Verify, its, href, attribute, without, navigating, away, Link, https:, zoworld, app, tech, privacypolicy, Low, positive, Automatable
+[PROJECT INSPECTOR] Discovered 56 project files
+[PROJECT INSPECTOR] Relevant files:
+  - tests/PlaywrightAutomationAgent.spec.ts
+  - tests/AutomationApplier.spec.ts
+  - flows/LoginFlow.ts
+  - pages/LoginPage.ts
+  - flows/AuthenticationFlow.ts
+  - tests/TEST-1-login.spec.ts
+  - agent/PlaywrightAutomationAgent.ts
+  - tests/TEST-2-login.spec.ts
+  - config/prod.config.ts
+  - config/qa.config.ts
+[PLAYWRIGHT AGENT] Test case: TC-010
+[PLAYWRIGHT AGENT] Target file: tests/TEST-1-login.spec.ts
+[PLAYWRIGHT AGENT] Reason: Verify the Privacy Policy link on the login page points to the expected URL using a stable role-based locator.
+
+[AGENT] Generated automation proposal:
+{
+  "file": "tests/TEST-1-login.spec.ts",
+  "testCaseId": "TC-010",
+  "code": "test('TC-010 - Privacy Policy link points to the expected URL', async ({ loginFlow, page }) => {\n  // Precondition: Login page is loaded\n  await loginFlow.open();\n\n  // Locate the 'Privacy Policy' link using a role-based locator\n  const privacyLink = page.getByRole('link', { name: /privacy policy/i });\n\n  // Verify its href attribute without navigating away\n  await expect(privacyLink).toHaveAttribute(\n    'href',\n    'https://in.zoworld.app/ed-tech/privacypolicy'\n  );\n});",
+  "reason": "Verify the Privacy Policy link on the login page points to the expected URL using a stable role-based locator."
+}
+
+[AGENT] Applying automation for TC-010
+
+[AUTOMATION APPLIER] Applying TC-010
+[AUTOMATION APPLIER] Added TC-010 to tests/TEST-1-login.spec.ts
+
+[AGENT] Executing TC-010
+[AUTOMATION EXECUTOR] Executing TC-010
+[AUTOMATION EXECUTOR] Command: npx playwright test tests/TEST-1-login.spec.ts -g "TC-010" --project=chromium --workers=1
+◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+ENV: qa
+BASE URL: https://stg.zoworld.app/ed-tech/
+◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+5
+[GLOBAL] TEST RUN STARTED
+
+Running 1 test using 1 worker
+
+◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+ENV: qa
+BASE URL: https://stg.zoworld.app/ed-tech/
+◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+5
+[REPORTER] STARTED: TC-010 - Privacy Policy link points to the expected URL
+[Worker 0][chromium]STARTED: TC-010 - Privacy Policy link points to the expected URL
+[HOOK] BEFORE EACH: TC-010 - Privacy Policy link points to the expected URL
+ed-tech
+[HOOK] AFTER EACH: TC-010 - Privacy Policy link points to the expected URL - passed
+[Worker 0] [chromium] FINISHED: TC-010 - Privacy Policy link points to the expected URL (3972ms)
+  ✓  1 [chromium] › tests/TEST-1-login.spec.ts:96:5 › TC-010 - Privacy Policy link points to the expected URL (3.7s)
+[REPORTER] FINISHED: TC-010 - Privacy Policy link points to the expected URL | Status: passed | Duration: 3705ms
+[GLOBAL] TEST RUN FINISHED
+
+  1 passed (4.4s)
+[REPORTER] TEST RUN FINISHED: passed
+
+
+[AGENT] Execution status: PASSED
+
+========================================
+[AGENT] Autonomous QA workflow completed successfully
+========================================
+

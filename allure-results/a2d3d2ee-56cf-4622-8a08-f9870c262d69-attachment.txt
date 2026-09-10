@@ -1,0 +1,5 @@
+Hybrid Plan: {
+  strategy: 'api-ui-hybrid',
+  executionType: 'hybrid',
+  components: [ 'API Service', 'Page Object', 'Business Flow', 'Playwright Test' ]
+}

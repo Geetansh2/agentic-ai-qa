@@ -1,0 +1,30 @@
+
+[AGENT] Starting automation planning for TEST-1
+[AGENT] TC-001: ALREADY AUTOMATED → SKIP
+[AGENT] TC-002: ALREADY AUTOMATED → SKIP
+[AGENT] TC-003: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-004: ALREADY AUTOMATED → SKIP
+[AGENT] TC-005: ALREADY AUTOMATED → SKIP
+[AGENT] TC-006: ALREADY AUTOMATED → SKIP
+[AGENT] TC-007: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-008: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-009: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-010: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-011: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-012: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-013: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-014: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-015: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-016: NOT AUTOMATED → CANDIDATE
+[AGENT] Selected test case: TC-003
+[AUTOMATION PLANNER] Strategy: ui-only
+[AUTOMATION PLANNER] Reason: This verifies client-side input/truncation behavior on the login page and can be validated entirely by entering the value and asserting the field's displayed value equals the first 10 digits.
+[AGENT] Strategy: ui-only
+[AGENT] Execution type: ui
+[AGENT] Components: Page Object, Business Flow, Playwright Test
+
+FINAL AGENT PLAN: {
+  strategy: 'ui-only',
+  executionType: 'ui',
+  components: [ 'Page Object', 'Business Flow', 'Playwright Test' ]
+}

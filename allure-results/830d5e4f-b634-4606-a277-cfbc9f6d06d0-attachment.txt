@@ -1,0 +1,30 @@
+[AUTOMATION EXECUTOR] Executing TC-003
+[AUTOMATION EXECUTOR] Command: npx playwright test tests/TEST-1-login.spec.ts -g "TC-003" --project=chromium --workers=1
+◇ injected env (0) from .env // tip: ⌘ suppress logs { quiet: true }
+ENV: qa
+BASE URL: https://stg.zoworld.app/ed-tech/
+◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+5
+[GLOBAL] TEST RUN STARTED
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+You may need to escape symbols like "$" or "*" and quote the arguments.
+[GLOBAL] TEST RUN FINISHED
+
+[REPORTER] TEST RUN FINISHED: failed
+
+[EXECUTION RESULT] {
+  status: 'FAILED',
+  output: '◇ injected env (0) from .env // tip: ⌘ suppress logs { quiet: true }\n' +
+    'ENV: qa\n' +
+    'BASE URL: https://stg.zoworld.app/ed-tech/\n' +
+    '◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]\n' +
+    '\x1B[33m5\x1B[39m\n' +
+    '[GLOBAL] TEST RUN STARTED\n' +
+    'Error: No tests found.\n' +
+    'Make sure that arguments are regular expressions matching test files.\n' +
+    'You may need to escape symbols like "$" or "*" and quote the arguments.\n' +
+    '[GLOBAL] TEST RUN FINISHED\n' +
+    '\n' +
+    '[REPORTER] TEST RUN FINISHED: failed\n'
+}
