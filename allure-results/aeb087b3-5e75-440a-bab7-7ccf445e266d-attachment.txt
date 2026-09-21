@@ -1,0 +1,5 @@
+[Worker 0][chromium]STARTED: TC-011 - Language toggle control is displayed on the login page
+[HOOK] BEFORE EACH: TC-011 - Language toggle control is displayed on the login page
+ed-tech
+[HOOK] AFTER EACH: TC-011 - Language toggle control is displayed on the login page - passed
+[Worker 0] [chromium] FINISHED: TC-011 - Language toggle control is displayed on the login page (3227ms)

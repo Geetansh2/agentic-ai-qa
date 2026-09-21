@@ -1,0 +1,11 @@
+
+[NETWORK MOCKING DECISION]
+{
+  "decision": "MOCK_FAILURE",
+  "reason": "The test requires deterministic Send OTP API failure behavior to verify the UI displays an error when the API returns HTTP 500.",
+  "endpoint": "/ed-tech/api/auth/send-otp",
+  "responseStatus": 500,
+  "responseBody": {
+    "error": "Internal Server Error"
+  }
+}

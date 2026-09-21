@@ -1,0 +1,49 @@
+
+[HISTORICAL FAILURE AGENT] Analyzing current failure
+[HISTORICAL FAILURE AGENT] Loading Skill: /Users/geetansh/Documents/agentic-ai-qa/.claude/skills/historical-failure-knowledge/SKILL.md
+[HISTORICAL FAILURE AGENT] Match type: STRONG_MATCH
+[HISTORICAL FAILURE AGENT] Confidence: 0.96
+[HISTORICAL FAILURE AGENT] Recurring pattern: true
+[HISTORICAL FAILURE AGENT] Summary: The current failure strongly matches two historical TC-004 TIMEOUT failures for 'Click Send OTP' in qa/chromium; historical root cause recorded as 'OTP service timeout' and is consistent with current signals.
+
+[TEST] Historical Failure Decision:
+{
+  "matchType": "STRONG_MATCH",
+  "relevantFailures": [
+    {
+      "testCaseId": "TC-004",
+      "reason": "Exact match on testCaseId, testFile, failedStep, errorMessage, page, environment, browser, and failure type.",
+      "matchingSignals": [
+        "same test case",
+        "same test file",
+        "same failed step",
+        "same error message",
+        "same page",
+        "same environment",
+        "same browser",
+        "same failure type"
+      ],
+      "timestamp": "2026-09-01T10:30:00Z"
+    },
+    {
+      "testCaseId": "TC-004",
+      "reason": "Exact match on testCaseId, testFile, failedStep, errorMessage, page, environment, browser, and failure type (earlier occurrence).",
+      "matchingSignals": [
+        "same test case",
+        "same test file",
+        "same failed step",
+        "same error message",
+        "same page",
+        "same environment",
+        "same browser",
+        "same failure type"
+      ],
+      "timestamp": "2026-08-20T09:15:00Z"
+    }
+  ],
+  "recurringPattern": true,
+  "historicalRootCause": "OTP service timeout",
+  "rootCauseConsistent": true,
+  "confidence": 0.96,
+  "summary": "The current failure strongly matches two historical TC-004 TIMEOUT failures for 'Click Send OTP' in qa/chromium; historical root cause recorded as 'OTP service timeout' and is consistent with current signals."
+}
