@@ -1,0 +1,34 @@
+[
+  {
+    "testCaseId": "TC-004",
+    "testName": "Verify Send OTP button",
+    "testFile": "tests/login/TEST-1-login.spec.ts",
+    "errorMessage": "Timeout waiting for Send OTP button",
+    "failureType": "TIMEOUT",
+    "failedStep": "Click Send OTP",
+    "page": "LoginPage",
+    "environment": "qa",
+    "browser": "chromium",
+    "durationMs": 30000,
+    "rootCause": "OTP service timeout",
+    "resolution": "Retry after service recovery",
+    "retryResult": "PASSED",
+    "timestamp": "2026-09-18T10:00:00Z"
+  },
+  {
+    "testCaseId": "TC-005",
+    "testName": "Verify invalid mobile number",
+    "testFile": "tests/login/TEST-1-login.spec.ts",
+    "errorMessage": "Locator timeout waiting for mobile input",
+    "failureType": "TIMEOUT",
+    "failedStep": "Fill mobile number",
+    "page": "LoginPage",
+    "environment": "qa",
+    "browser": "chromium",
+    "durationMs": 30000,
+    "rootCause": "OTP service timeout",
+    "resolution": "Retry after service recovery",
+    "retryResult": "PASSED",
+    "timestamp": "2026-09-18T10:05:00Z"
+  }
+]

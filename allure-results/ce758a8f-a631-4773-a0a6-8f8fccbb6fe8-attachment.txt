@@ -1,0 +1,50 @@
+[HISTORICAL FAILURE STORE] Saved 3 failure(s)
+
+[HISTORICAL FAILURE AGENT] Analyzing current failure
+[HISTORICAL FAILURE AGENT] Test case: TC-004
+[HISTORICAL FAILURE AGENT] Retrieving historical failures...
+[HISTORICAL FAILURE AGENT] Retrieved 2 historical failure(s)
+[HISTORICAL FAILURE AGENT] Loading Skill: /Users/geetansh/Documents/agentic-ai-qa/.claude/skills/historical-failure-knowledge/SKILL.md
+[HISTORICAL FAILURE AGENT] Match type: STRONG_MATCH
+[HISTORICAL FAILURE AGENT] Confidence: 0.95
+[HISTORICAL FAILURE AGENT] Recurring pattern: true
+[HISTORICAL FAILURE AGENT] Summary: Current timeout while clicking Send OTP strongly matches two prior TC-004 failures (same file, step, error, environment, browser). Historical root cause recorded as 'OTP service timeout', which is consistent with the current failure.
+
+Historical Failure Decision: {
+  "matchType": "STRONG_MATCH",
+  "relevantFailures": [
+    {
+      "testCaseId": "TC-004",
+      "reason": "Exact same test case, failed step, error message, test file, page, environment, and browser as the current failure.",
+      "matchingSignals": [
+        "same test case",
+        "same test file",
+        "same failed step",
+        "same error message",
+        "same failure type",
+        "same page",
+        "same environment",
+        "same browser"
+      ]
+    },
+    {
+      "testCaseId": "TC-004",
+      "reason": "Second occurrence with identical signals: same test case, failed step, error message, test file, page, environment, and browser.",
+      "matchingSignals": [
+        "same test case",
+        "same test file",
+        "same failed step",
+        "same error message",
+        "same failure type",
+        "same page",
+        "same environment",
+        "same browser"
+      ]
+    }
+  ],
+  "recurringPattern": true,
+  "historicalRootCause": "OTP service timeout",
+  "rootCauseConsistent": true,
+  "confidence": 0.95,
+  "summary": "Current timeout while clicking Send OTP strongly matches two prior TC-004 failures (same file, step, error, environment, browser). Historical root cause recorded as 'OTP service timeout', which is consistent with the current failure."
+}

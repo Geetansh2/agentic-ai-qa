@@ -1,0 +1,11 @@
+
+[NETWORK MOCKING DECISION]
+{
+  "decision": "MOCK_FAILURE",
+  "reason": "The test explicitly requires simulating the Send OTP API returning HTTP 500 to verify the UI error flow, so deterministic backend failure mocking is required.",
+  "endpoint": "Send OTP API",
+  "responseStatus": 500,
+  "responseBody": {
+    "error": "Internal Server Error"
+  }
+}

@@ -1,0 +1,4 @@
+[HISTORICAL FAILURE STORE] Saved failure for TC-004
+[HISTORICAL FAILURE STORE] Saved failure for TC-005
+
+[TEST] Historical Failure Store: PASSED

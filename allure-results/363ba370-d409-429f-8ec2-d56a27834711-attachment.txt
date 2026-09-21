@@ -1,0 +1,20 @@
+
+[FLAKY TEST AGENT] Analyzing TC-NETWORK-001
+[FLAKY TEST AGENT] Loading Skill: /Users/geetansh/Documents/agentic-ai-qa/.claude/skills/flaky-test-detection/SKILL.md
+[FLAKY TEST AGENT] Classification: FLAKY
+[FLAKY TEST AGENT] Confidence: 0.8
+[FLAKY TEST AGENT] Reason: Test shows intermittent failures: two runs (2 and 5) failed with the same timeout waiting for the Send OTP button while the other runs passed, indicating inconsistent timing/locator behavior.
+[FLAKY TEST AGENT] Signals: PASS and FAIL results alternate across executions: PASS, FAIL, PASS, PASS, FAIL; Same timeout error 'Timeout waiting for Send OTP button' appears in failures (runs 2 and 5); 5 executions with mixed outcomes (3 PASS, 2 FAIL) — sufficient historical evidence of inconsistency; Execution durations are similar (1180–1210 ms), suggesting failures are intermittent rather than due to large performance regressions
+
+[TEST] Flaky Test Decision:
+{
+  "classification": "FLAKY",
+  "reason": "Test shows intermittent failures: two runs (2 and 5) failed with the same timeout waiting for the Send OTP button while the other runs passed, indicating inconsistent timing/locator behavior.",
+  "confidence": 0.8,
+  "signals": [
+    "PASS and FAIL results alternate across executions: PASS, FAIL, PASS, PASS, FAIL",
+    "Same timeout error 'Timeout waiting for Send OTP button' appears in failures (runs 2 and 5)",
+    "5 executions with mixed outcomes (3 PASS, 2 FAIL) — sufficient historical evidence of inconsistency",
+    "Execution durations are similar (1180–1210 ms), suggesting failures are intermittent rather than due to large performance regressions"
+  ]
+}

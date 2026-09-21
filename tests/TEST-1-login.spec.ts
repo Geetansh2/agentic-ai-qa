@@ -106,3 +106,12 @@ test('TC-010 - Privacy Policy link points to the expected URL', async ({ loginFl
     'https://in.zoworld.app/ed-tech/privacypolicy'
   );
 });
+
+test('TC-011 - Language toggle control is displayed on the login page', async ({ loginFlow, page }) => {
+  // Precondition: Login page is loaded
+  await loginFlow.open();
+
+  // Verify the 'English' language toggle button is visible near the top of the page
+  const englishButton = page.getByRole('button', { name: 'English' });
+  await expect(englishButton).toBeVisible();
+});

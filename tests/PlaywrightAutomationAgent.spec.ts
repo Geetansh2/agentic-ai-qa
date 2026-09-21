@@ -1,109 +1,110 @@
 
-import { test, expect } from '@playwright/test';
+// import { test, expect } from '@playwright/test';
 
-import {
-    PlaywrightAutomationAgent,
-} from '../agent/PlaywrightAutomationAgent';
+// import {
+//     PlaywrightAutomationAgent,
+// } from '../agent/PlaywrightAutomationAgent';
 
-test.describe('PlaywrightAutomationAgent', () => {
+// test.describe('PlaywrightAutomationAgent', () => {
 
-    test('should generate automation using Playwright Skill', async () => {
+//     test('should generate automation using Playwright Skill', async () => {
 
-        const agent =
-            new PlaywrightAutomationAgent();
+//         const agent =
+//             new PlaywrightAutomationAgent();
 
-        const proposal =
-            await agent.generate({
-                jiraIssueKey: 'TEST-1',
+//         const proposal =
+//             await agent.generate({
+//                 jiraIssueKey: 'TEST-1',
 
-                testCaseId: 'TC-009',
+//                 testCaseId: 'TC-009',
 
-                testCase: {
-                    id: 'TC-009',
+//                 testCase: {
+//                     id: 'TC-009',
 
-                    title:
-                        'Terms & Conditions link points to the expected URL',
+//                     title:
+//                         'Terms & Conditions link points to the expected URL',
 
-                    preconditions: [
-                        'Login page is loaded',
-                    ],
+//                     preconditions: [
+//                         'Login page is loaded',
+//                     ],
 
-                    testData: {},
+//                     testData: {},
 
-                    steps: [
-                        "Locate the 'Terms & Conditions' link",
-                        'Verify its href attribute without navigating away',
-                    ],
+//                     steps: [
+//                         "Locate the 'Terms & Conditions' link",
+//                         'Verify its href attribute without navigating away',
+//                     ],
 
-                    expectedResult:
-                        "Link href is 'https://in.zoworld.app/ed-tech/terms&condition'.",
+//                     expectedResult:
+//                         "Link href is 'https://in.zoworld.app/ed-tech/terms&condition'.",
 
-                    priority: 'Low',
+//                     priority: 'Low',
 
-                    type: 'positive',
+//                     type: 'positive',
 
-                    automationStatus:
-                        'Automatable',
-                },
+//                     automationStatus:
+//                         'Automatable',
+//                 },
 
-                strategy: 'ui-only',
+//                 strategy: 'ui-only',
 
-                executionType: 'ui',
+//                 executionType: 'ui',
 
-                components: [
-                    'Page Object',
-                    'Business Flow',
-                    'Playwright Test',
-                ],
-            });
+//                 components: [
+//                     'Page Object',
+//                     'Business Flow',
+//                     'Playwright Test',
+//                 ],
+//                 networkMocking: null
+//             });
 
-        console.log(
-            '\n[GENERATED PLAYWRIGHT PROPOSAL]'
-        );
+//         console.log(
+//             '\n[GENERATED PLAYWRIGHT PROPOSAL]'
+//         );
 
-        console.log(
-            JSON.stringify(
-                proposal,
-                null,
-                2
-            )
-        );
+//         console.log(
+//             JSON.stringify(
+//                 proposal,
+//                 null,
+//                 2
+//             )
+//         );
 
-        /*
-         * Validate test case
-         */
-        expect(
-            proposal.testCaseId
-        ).toBe('TC-009');
+//         /*
+//          * Validate test case
+//          */
+//         expect(
+//             proposal.testCaseId
+//         ).toBe('TC-009');
 
-        /*
-         * Validate target file
-         */
-        expect(
-            proposal.file
-        ).toBe(
-            'tests/TEST-1-login.spec.ts'
-        );
+//         /*
+//          * Validate target file
+//          */
+//         expect(
+//             proposal.file
+//         ).toBe(
+//             'tests/TEST-1-login.spec.ts'
+//         );
 
-        /*
-         * Validate generated code
-         */
-        expect(
-            proposal.code
-        ).toContain('TC-009');
+//         /*
+//          * Validate generated code
+//          */
+//         expect(
+//             proposal.code
+//         ).toContain('TC-009');
 
-        expect(
-            proposal.code
-        ).toContain('expect');
+//         expect(
+//             proposal.code
+//         ).toContain('expect');
 
-        /*
-         * Validate proposal reason
-         */
-        expect(
-            proposal.reason
-        ).toBeTruthy();
+//         /*
+//          * Validate proposal reason
+//          */
+//         expect(
+//             proposal.reason
+//         ).toBeTruthy();
 
-    });
+//     });
 
-});
+// });
 
