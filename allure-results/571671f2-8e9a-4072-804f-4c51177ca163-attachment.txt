@@ -1,0 +1,12 @@
+
+========================================
+       HUMAN APPROVAL REQUIRED
+========================================
+Action: UPDATE_JIRA
+Target: TEST-1
+Environment: qa
+Reason: Update the Jira issue.
+Risk: External Jira modification.
+Reversible: Yes
+========================================
+Type APPROVED or REJECTED:

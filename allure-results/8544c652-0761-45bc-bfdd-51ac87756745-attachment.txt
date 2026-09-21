@@ -1,0 +1,12 @@
+
+========================================
+       HUMAN APPROVAL REQUIRED
+========================================
+Action: CREATE_JIRA_BUG
+Target: TEST-1 / TC-004
+Environment: qa
+Reason: Create a Jira bug for the failed test.
+Risk: Creates an external Jira issue.
+Reversible: Yes
+========================================
+Type APPROVED or REJECTED:

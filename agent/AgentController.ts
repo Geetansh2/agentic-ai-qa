@@ -19,6 +19,21 @@ import {
     HistoricalFailureStore,
 } from '../utils/HistoricalFailureStore';
 
+import {
+    HumanApprovalGate,
+} from '../utils/HumanApprovalGate';
+
+import {
+    HumanApprovalResolver,
+} from '../utils/HumanApprovalResolver';
+
+
+import {
+    HumanApprovalPrompt,
+} from '../utils/HumanApprovalPrompt';
+
+
+
 export type AutomationTask = {
     jiraIssueKey: string;
     testCaseId: string;
@@ -55,7 +70,15 @@ export class AgentController {
         HistoricalFailureKnowledgeAgent;
 
     private readonly historicalFailureStore:
-    HistoricalFailureStore;
+        HistoricalFailureStore;
+
+    private readonly humanApprovalGate:
+        HumanApprovalGate;
+    
+    private readonly humanApprovalResolver:
+        HumanApprovalResolver;
+    
+    private readonly humanApprovalPrompt: HumanApprovalPrompt;
 
     constructor() {
 
@@ -84,7 +107,17 @@ export class AgentController {
             new HistoricalFailureKnowledgeAgent();
 
         this.historicalFailureStore =
-    new HistoricalFailureStore();
+            new HistoricalFailureStore();
+        
+        this.humanApprovalGate =
+            new HumanApprovalGate();
+
+        this.humanApprovalResolver =
+            new HumanApprovalResolver(
+                this.humanApprovalGate
+            );
+
+        this.humanApprovalPrompt = new HumanApprovalPrompt();
     }
 
     async plan(
@@ -287,6 +320,98 @@ export class AgentController {
             `${proposal.testCaseId}`
         );
 
+        const approvalDecision =
+        this.humanApprovalGate.evaluate({
+        action:
+            process.env.ENV?.toLowerCase() === 'prod'
+                ? 'RUN_PROD_TEST'
+                : 'RUN_QA_TEST',
+
+        target:
+            `${proposal.testCaseId} / ${proposal.file}`,
+
+        environment:
+            process.env.ENV ?? 'qa',
+
+        reason:
+            `Execute generated Playwright automation for ` +
+            `${proposal.testCaseId}.`,
+
+        risk:
+            process.env.ENV?.toLowerCase() === 'prod'
+                ? 'Production test execution may affect live systems.'
+                : 'Normal non-production QA automation execution.',
+
+        reversible:
+            true,
+    });
+
+        console.log(
+            '[AGENT] Human approval decision:'
+        );
+
+        console.log(
+            JSON.stringify(
+                approvalDecision,
+                null,
+                2
+            )
+        );
+
+        if (
+            approvalDecision.status ===
+            'BLOCKED'
+        ) {
+            throw new Error(
+                `[AGENT] Action blocked by human approval gate: ` +
+                `${approvalDecision.reason}`
+            );
+        }
+
+
+if (
+    approvalDecision.status ===
+    'PENDING'
+) {
+    console.log(
+        '[AGENT] Human approval required.'
+    );
+
+    const finalApprovalDecision =
+        await this.humanApprovalPrompt
+            .requestApproval(
+                approvalDecision
+            );
+
+    console.log(
+        `[AGENT] Human approval result: ` +
+        `${finalApprovalDecision.status}`
+    );
+
+    if (
+        !this.humanApprovalGate
+            .canExecute(
+                finalApprovalDecision
+            )
+    ) {
+        throw new Error(
+            `[AGENT] Human approval denied: ` +
+            `${finalApprovalDecision.status}`
+        );
+    }
+}
+
+
+        if (
+            !this.humanApprovalGate.canExecute(
+                approvalDecision
+            )
+        ) {
+            throw new Error(
+                `[AGENT] Execution denied by human approval gate.`
+            );
+        }
+
         const execution =
             await this.automationExecutor.execute(
                 proposal.file,
@@ -298,74 +423,95 @@ export class AgentController {
             `${execution.status}`
         );
 
-        if (
-            execution.status ===
-            'FAILED'
-        ) {
+       if (
+    execution.status ===
+    'FAILED'
+) {
+    console.log(
+        `\n[AGENT] Execution failed. ` +
+        `Checking historical failure knowledge...`
+    );
 
-            console.log(
-                `\n[AGENT] Execution failed. ` +
-                `Checking historical failure knowledge...`
-            );
+    const currentFailure = {
+        testCaseId:
+            proposal.testCaseId,
 
-            const currentFailure = {
-                testCaseId:
-                    proposal.testCaseId,
+        testName:
+            proposal.testCaseId,
 
-                testName:
-                    proposal.testCaseId,
+        testFile:
+            proposal.file,
 
-                testFile:
-                    proposal.file,
+        errorMessage:
+            execution.output,
 
-                errorMessage:
-                    execution.output,
+        failureType:
+            'AUTOMATION_EXECUTION_FAILURE',
 
-                failureType:
-                    'AUTOMATION_EXECUTION_FAILURE',
+        environment:
+            process.env.ENV ?? 'qa',
 
-                environment:
-                    process.env.ENV ?? 'qa',
+        browser:
+            'chromium',
+    };
 
-                browser:
-                    'chromium',
-            };
-
-            try {
-
-                const historicalDecision =
-                    await this
-                        .historicalFailureKnowledgeAgent
-                        .analyze(
-                            currentFailure
-                        );
-
-                console.log(
-                    `\n[AGENT] Historical failure analysis:`
+    try {
+        const historicalDecision =
+            await this
+                .historicalFailureKnowledgeAgent
+                .analyze(
+                    currentFailure
                 );
 
-                console.log(
-                    JSON.stringify(
-                        historicalDecision,
-                        null,
-                        2
-                    )
-                );
+        console.log(
+            `\n[AGENT] Historical failure analysis:`
+        );
 
-            } catch (error) {
+        console.log(
+            JSON.stringify(
+                historicalDecision,
+                null,
+                2
+            )
+        );
+    } catch (error) {
+        console.error(
+            `[AGENT] Historical failure analysis failed:`,
+            error
+        );
+    }
 
-                console.error(
-                    `[AGENT] Historical failure analysis failed:`,
-                    error
-                );
-            }
+    this.historicalFailureStore.save({
+        testCaseId:
+            proposal.testCaseId,
 
-            throw new Error(
-                `[AGENT] ${proposal.testCaseId} execution failed.`
-            );
+        testName:
+            proposal.testCaseId,
 
-            
-        }
+        testFile:
+            proposal.file,
+
+        errorMessage:
+            execution.output,
+
+        failureType:
+            'AUTOMATION_EXECUTION_FAILURE',
+
+        environment:
+            process.env.ENV ?? 'qa',
+
+        browser:
+            'chromium',
+
+        timestamp:
+            new Date().toISOString(),
+    });
+
+    throw new Error(
+        `[AGENT] ${proposal.testCaseId} execution failed.\n\n` +
+        `Playwright output:\n${execution.output}`
+    );
+}
 
         this.historicalFailureStore.save({
             testCaseId:

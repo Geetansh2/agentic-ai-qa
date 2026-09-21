@@ -1,0 +1,78 @@
+
+[AGENT] Starting automation planning for TEST-1
+[AGENT] TC-001: ALREADY AUTOMATED → SKIP
+[AGENT] TC-002: ALREADY AUTOMATED → SKIP
+[AGENT] TC-003: ALREADY AUTOMATED → SKIP
+[AGENT] TC-004: ALREADY AUTOMATED → SKIP
+[AGENT] TC-005: ALREADY AUTOMATED → SKIP
+[AGENT] TC-006: ALREADY AUTOMATED → SKIP
+[AGENT] TC-007: ALREADY AUTOMATED → SKIP
+[AGENT] TC-008: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-009: ALREADY AUTOMATED → SKIP
+[AGENT] TC-010: ALREADY AUTOMATED → SKIP
+[AGENT] TC-011: ALREADY AUTOMATED → SKIP
+[AGENT] TC-012: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-013: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-014: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-015: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-016: NOT AUTOMATED → CANDIDATE
+[TEST CASE SELECTOR] Candidates: 6
+[AGENT] LLM selected test case: TC-008
+[AGENT] Selection reason: Automatable edge case: verifies that 'Send OTP' becomes enabled when the mobile field is empty but the Terms & Conditions checkbox is checked; safe to run without triggering a real OTP.
+[AUTOMATION PLANNER] Strategy: ui-only
+[AUTOMATION PLANNER] Reason: This validates client-side UI behavior (Send OTP button enabled/disabled) based on form state; no backend/API interactions are required.
+[AGENT] Strategy: ui-only
+[AGENT] Execution type: ui
+[AGENT] Components: Page Object, Business Flow, Playwright Test
+
+[AGENT] Automation task created: {
+  "jiraIssueKey": "TEST-1",
+  "testCaseId": "TC-008",
+  "testCase": {
+    "id": "TC-008",
+    "title": "Send OTP is enabled even when mobile number field is empty (checkbox checked)",
+    "preconditions": [
+      "Login page is loaded"
+    ],
+    "testData": {
+      "mobileNumber": ""
+    },
+    "steps": [
+      "Leave the Mobile number field empty",
+      "Select the Terms & Conditions checkbox"
+    ],
+    "expectedResult": "Observed: Send OTP button is enabled (no client-side required-field validation gates the button beyond the checkbox). Whether this is intended product behavior is UNKNOWN - see unknownBehavior.",
+    "priority": "Medium",
+    "type": "edge",
+    "automationStatus": "Automatable"
+  },
+  "strategy": "ui-only",
+  "executionType": "ui",
+  "components": [
+    "Page Object",
+    "Business Flow",
+    "Playwright Test"
+  ]
+}
+
+FINAL AGENT TASK: {
+  jiraIssueKey: 'TEST-1',
+  testCaseId: 'TC-008',
+  testCase: {
+    id: 'TC-008',
+    title: 'Send OTP is enabled even when mobile number field is empty (checkbox checked)',
+    preconditions: [ 'Login page is loaded' ],
+    testData: { mobileNumber: '' },
+    steps: [
+      'Leave the Mobile number field empty',
+      'Select the Terms & Conditions checkbox'
+    ],
+    expectedResult: 'Observed: Send OTP button is enabled (no client-side required-field validation gates the button beyond the checkbox). Whether this is intended product behavior is UNKNOWN - see unknownBehavior.',
+    priority: 'Medium',
+    type: 'edge',
+    automationStatus: 'Automatable'
+  },
+  strategy: 'ui-only',
+  executionType: 'ui',
+  components: [ 'Page Object', 'Business Flow', 'Playwright Test' ]
+}

@@ -1,0 +1,12 @@
+
+========================================
+       HUMAN APPROVAL REQUIRED
+========================================
+Action: SEND_EMAIL
+Target: QA report recipients
+Environment: qa
+Reason: Send the QA execution report.
+Risk: Sends an external email.
+Reversible: No
+========================================
+Type APPROVED or REJECTED:
