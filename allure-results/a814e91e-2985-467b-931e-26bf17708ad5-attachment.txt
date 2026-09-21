@@ -1,0 +1,84 @@
+
+[AGENT] Starting automation planning for TEST-1
+[AGENT] TC-001: ALREADY AUTOMATED → SKIP
+[AGENT] TC-002: ALREADY AUTOMATED → SKIP
+[AGENT] TC-003: ALREADY AUTOMATED → SKIP
+[AGENT] TC-004: ALREADY AUTOMATED → SKIP
+[AGENT] TC-005: ALREADY AUTOMATED → SKIP
+[AGENT] TC-006: ALREADY AUTOMATED → SKIP
+[AGENT] TC-007: ALREADY AUTOMATED → SKIP
+[AGENT] TC-008: ALREADY AUTOMATED → SKIP
+[AGENT] TC-009: ALREADY AUTOMATED → SKIP
+[AGENT] TC-010: ALREADY AUTOMATED → SKIP
+[AGENT] TC-011: ALREADY AUTOMATED → SKIP
+[AGENT] TC-012: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-013: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-014: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-015: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-016: NOT AUTOMATED → CANDIDATE
+[TEST CASE SELECTOR] Candidates: 5
+[AGENT] LLM selected test case: TC-016
+[AGENT] Selection reason: Covers unregistered-number login behavior (important negative path) but is currently blocked due to lack of a QA OTP mechanism and a known-unregistered test number.
+[AUTOMATION PLANNER] Strategy: api-only
+[AUTOMATION PLANNER] Reason: The UI path is blocked by lack of a QA OTP mechanism. The test is about backend behavior (whether an unregistered number is rejected or auto-registered) which can be validated by calling the send-OTP / registration-check APIs or inspecting backend state without needing real OTP UI interaction.
+[AGENT] Strategy: api-only
+[AGENT] Execution type: api
+[AGENT] Components: ApiClient, API Service, Playwright API Test
+
+[AGENT] Automation task created: {
+  "jiraIssueKey": "TEST-1",
+  "testCaseId": "TC-016",
+  "testCase": {
+    "id": "TC-016",
+    "title": "Login attempt with an unregistered mobile number",
+    "preconditions": [
+      "Login page is loaded"
+    ],
+    "testData": {
+      "mobileNumber": "UNKNOWN - requires a known-unregistered test number"
+    },
+    "steps": [
+      "Enter an unregistered mobile number",
+      "Check the Terms & Conditions checkbox",
+      "Click 'Send OTP'"
+    ],
+    "expectedResult": "UNKNOWN - whether unregistered numbers are auto-registered or rejected has not been documented or observed.",
+    "priority": "Medium",
+    "type": "negative",
+    "automationStatus": "Blocked",
+    "blockedReason": "No QA OTP mechanism available; requires triggering a real OTP send and knowledge of registration status of a test number."
+  },
+  "strategy": "api-only",
+  "executionType": "api",
+  "components": [
+    "ApiClient",
+    "API Service",
+    "Playwright API Test"
+  ]
+}
+
+FINAL AGENT TASK: {
+  jiraIssueKey: 'TEST-1',
+  testCaseId: 'TC-016',
+  testCase: {
+    id: 'TC-016',
+    title: 'Login attempt with an unregistered mobile number',
+    preconditions: [ 'Login page is loaded' ],
+    testData: {
+      mobileNumber: 'UNKNOWN - requires a known-unregistered test number'
+    },
+    steps: [
+      'Enter an unregistered mobile number',
+      'Check the Terms & Conditions checkbox',
+      "Click 'Send OTP'"
+    ],
+    expectedResult: 'UNKNOWN - whether unregistered numbers are auto-registered or rejected has not been documented or observed.',
+    priority: 'Medium',
+    type: 'negative',
+    automationStatus: 'Blocked',
+    blockedReason: 'No QA OTP mechanism available; requires triggering a real OTP send and knowledge of registration status of a test number.'
+  },
+  strategy: 'api-only',
+  executionType: 'api',
+  components: [ 'ApiClient', 'API Service', 'Playwright API Test' ]
+}

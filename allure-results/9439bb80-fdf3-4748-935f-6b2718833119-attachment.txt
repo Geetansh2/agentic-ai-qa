@@ -1,0 +1,187 @@
+
+========================================
+[AGENT] Starting autonomous QA workflow: TEST-1
+========================================
+
+
+[AGENT] Starting automation planning for TEST-1
+[AGENT] TC-001: ALREADY AUTOMATED → SKIP
+[AGENT] TC-002: ALREADY AUTOMATED → SKIP
+[AGENT] TC-003: ALREADY AUTOMATED → SKIP
+[AGENT] TC-004: ALREADY AUTOMATED → SKIP
+[AGENT] TC-005: ALREADY AUTOMATED → SKIP
+[AGENT] TC-006: ALREADY AUTOMATED → SKIP
+[AGENT] TC-007: ALREADY AUTOMATED → SKIP
+[AGENT] TC-008: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-009: ALREADY AUTOMATED → SKIP
+[AGENT] TC-010: ALREADY AUTOMATED → SKIP
+[AGENT] TC-011: ALREADY AUTOMATED → SKIP
+[AGENT] TC-012: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-013: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-014: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-015: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-016: NOT AUTOMATED → CANDIDATE
+[TEST CASE SELECTOR] Candidates: 6
+[AGENT] LLM selected test case: TC-008
+[AGENT] Selection reason: Automatable edge case: verifies Send OTP button becomes enabled when Mobile number is empty but Terms & Conditions checkbox is checked — no external OTP service required.
+[AUTOMATION PLANNER] Strategy: ui-only
+[AUTOMATION PLANNER] Reason: This case verifies client-side UI behavior (Send OTP button enabled state when mobile is empty and checkbox checked); it requires inspecting UI controls and not backend/API interactions.
+[AGENT] Strategy: ui-only
+[AGENT] Execution type: ui
+[AGENT] Components: Page Object, Business Flow, Playwright Test
+
+[AGENT] Automation task created: {
+  "jiraIssueKey": "TEST-1",
+  "testCaseId": "TC-008",
+  "testCase": {
+    "id": "TC-008",
+    "title": "Send OTP is enabled even when mobile number field is empty (checkbox checked)",
+    "preconditions": [
+      "Login page is loaded"
+    ],
+    "testData": {
+      "mobileNumber": ""
+    },
+    "steps": [
+      "Leave the Mobile number field empty",
+      "Select the Terms & Conditions checkbox"
+    ],
+    "expectedResult": "Observed: Send OTP button is enabled (no client-side required-field validation gates the button beyond the checkbox). Whether this is intended product behavior is UNKNOWN - see unknownBehavior.",
+    "priority": "Medium",
+    "type": "edge",
+    "automationStatus": "Automatable"
+  },
+  "strategy": "ui-only",
+  "executionType": "ui",
+  "components": [
+    "Page Object",
+    "Business Flow",
+    "Playwright Test"
+  ]
+}
+
+[AGENT] Generating automation for TC-008
+
+[PLAYWRIGHT AGENT] Generating automation for TC-008
+[PLAYWRIGHT AGENT] Loading Skill: /Users/geetansh/Documents/agentic-ai-qa/.claude/skills/playwright/SKILL.md
+[PROJECT INSPECTOR] Searching for: 008, Send, OTP, enabled, even, when, mobile, number, field, empty, checkbox, checked, Login, page, loaded, Leave, the, Mobile, Select, Terms, Conditions, Observed:, button, client, side, required, validation, gates, beyond, Whether, this, intended, product, behavior, UNKNOWN, see, unknownBehavior, Medium, edge, Automatable
+[PROJECT INSPECTOR] Discovered 70 project files
+[PROJECT INSPECTOR] Relevant files:
+  - tests/TEST-1-login.spec.ts
+  - pages/LoginPage.ts
+  - tests/NetworkMockingAgent.spec.ts
+  - agent/PlaywrightAutomationAgent.ts
+  - flows/LoginFlow.ts
+  - tests/HistoricalFailureKnowledgeAgent.spec.ts
+  - tests/TEST-2-login.spec.ts
+  - agent/HistoricalFailureKnowledgeAgent.ts
+  - tests/AutomationStrategyAgent.spec.ts
+  - tests/TEST-3-login-hybrid.spec.ts
+[PLAYWRIGHT AGENT] Test case: TC-008
+[PLAYWRIGHT AGENT] Target file: tests/TEST-1-login.spec.ts
+[PLAYWRIGHT AGENT] Reason: Automates TC-008 by opening the login page, leaving the mobile field empty, accepting terms, and asserting the Send OTP button is enabled (matches observed behavior).
+
+[AGENT] Generated automation proposal:
+{
+  "file": "tests/TEST-1-login.spec.ts",
+  "testCaseId": "TC-008",
+  "code": "test('TC-008 - Send OTP is enabled even when mobile number field is empty (checkbox checked)', async ({ loginFlow }) => {\n  // Precondition: Login page is loaded\n  await loginFlow.open();\n\n  // Verify mobile number is empty\n  expect(await loginFlow.getMobileNumberValue()).toBe('');\n\n  // Select Terms & Conditions\n  await loginFlow.acceptTerms();\n\n  // Assertions: Terms should be checked and Send OTP should be enabled (observed behavior)\n  expect(await loginFlow.isTermsChecked()).toBe(true);\n  expect(await loginFlow.isSendOtpEnabled()).toBe(true);\n});",
+  "reason": "Automates TC-008 by opening the login page, leaving the mobile field empty, accepting terms, and asserting the Send OTP button is enabled (matches observed behavior)."
+}
+
+[AGENT] Applying automation for TC-008
+
+[AUTOMATION APPLIER] Applying TC-008
+[AUTOMATION APPLIER] Added TC-008 to tests/TEST-1-login.spec.ts
+
+[AGENT] Executing TC-008
+[AGENT] Human approval decision:
+{
+  "action": "RUN_QA_TEST",
+  "target": "TC-008 / tests/TEST-1-login.spec.ts",
+  "environment": "qa",
+  "reason": "Execute generated Playwright automation for TC-008.",
+  "risk": "Normal non-production QA automation execution.",
+  "reversible": true,
+  "approvalRequired": false,
+  "status": "APPROVED",
+  "timestamp": "2026-09-21T05:18:10.881Z"
+}
+[AUTOMATION EXECUTOR] Executing TC-008
+[AUTOMATION EXECUTOR] Command: npx playwright test tests/TEST-1-login.spec.ts -g "TC-008" --project=chromium --workers=1
+◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+ENV: qa
+BASE URL: https://stg.zoworld.app/ed-tech/
+◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+5
+[GLOBAL] TEST RUN STARTED
+
+Running 1 test using 1 worker
+
+◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+ENV: qa
+BASE URL: https://stg.zoworld.app/ed-tech/
+◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+5
+[REPORTER] STARTED: TC-008 - Send OTP is enabled even when mobile number field is empty (checkbox checked)
+[Worker 0][chromium]STARTED: TC-008 - Send OTP is enabled even when mobile number field is empty (checkbox checked)
+[HOOK] BEFORE EACH: TC-008 - Send OTP is enabled even when mobile number field is empty (checkbox checked)
+ed-tech
+[HOOK] AFTER EACH: TC-008 - Send OTP is enabled even when mobile number field is empty (checkbox checked) - failed
+[Worker 0] [chromium] FINISHED: TC-008 - Send OTP is enabled even when mobile number field is empty (checkbox checked) (2812ms)
+  ✘  1 [chromium] › tests/TEST-1-login.spec.ts:131:5 › TC-008 - Send OTP is enabled even when mobile number field is empty (checkbox checked) (2.6s)
+[REPORTER] FINISHED: TC-008 - Send OTP is enabled even when mobile number field is empty (checkbox checked) | Status: failed | Duration: 2576ms
+[REPORTER] FAILED: TC-008 - Send OTP is enabled even when mobile number field is empty (checkbox checked)
+[REPORTER] ERROR: TypeError: loginFlow.acceptTerms is not a function
+[GLOBAL] TEST RUN FINISHED
+
+
+  1) [chromium] › tests/TEST-1-login.spec.ts:131:5 › TC-008 - Send OTP is enabled even when mobile number field is empty (checkbox checked) 
+
+    TypeError: loginFlow.acceptTerms is not a function
+
+      137 |
+      138 |   // Select Terms & Conditions
+    > 139 |   await loginFlow.acceptTerms();
+          |                   ^
+      140 |
+      141 |   // Assertions: Terms should be checked and Send OTP should be enabled (observed behavior)
+      142 |   expect(await loginFlow.isTermsChecked()).toBe(true);
+        at /Users/geetansh/Documents/agentic-ai-qa/tests/TEST-1-login.spec.ts:139:19
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/TEST-1-login-TC-008---Send-c9d34--is-empty-checkbox-checked--chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/TEST-1-login-TC-008---Send-c9d34--is-empty-checkbox-checked--chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/TEST-1-login-TC-008---Send-c9d34--is-empty-checkbox-checked--chromium/error-context.md
+
+  1 failed
+    [chromium] › tests/TEST-1-login.spec.ts:131:5 › TC-008 - Send OTP is enabled even when mobile number field is empty (checkbox checked) 
+[REPORTER] TEST RUN FINISHED: failed
+
+[AGENT] Execution status: FAILED
+
+[AGENT] Execution failed. Checking historical failure knowledge...
+
+[HISTORICAL FAILURE AGENT] Analyzing current failure
+[HISTORICAL FAILURE AGENT] Test case: TC-008
+[HISTORICAL FAILURE AGENT] Retrieving historical failures...
+[HISTORICAL FAILURE AGENT] Retrieved 0 historical failure(s)
+[HISTORICAL FAILURE AGENT] Loading Skill: /Users/geetansh/Documents/agentic-ai-qa/.claude/skills/historical-failure-knowledge/SKILL.md
+[HISTORICAL FAILURE AGENT] Match type: NO_RELEVANT_HISTORY
+[HISTORICAL FAILURE AGENT] Confidence: 0
+[HISTORICAL FAILURE AGENT] Recurring pattern: false
+[HISTORICAL FAILURE AGENT] Summary: No relevant historical failure was found.
+
+[AGENT] Historical failure analysis:
+{
+  "matchType": "NO_RELEVANT_HISTORY",
+  "relevantFailures": [],
+  "recurringPattern": false,
+  "confidence": 0,
+  "summary": "No relevant historical failure was found."
+}

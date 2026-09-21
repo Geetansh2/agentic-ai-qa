@@ -1,0 +1,12 @@
+[
+  {
+    "testCaseId": "TC-007",
+    "testName": "TC-007",
+    "testFile": "tests/TEST-1-login.spec.ts",
+    "errorMessage": "◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]\nENV: qa\nBASE URL: https://stg.zoworld.app/ed-tech/\n◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]\n\u001b[33m5\u001b[39m\n[GLOBAL] TEST RUN STARTED\n\n\u001b[2mRunning \u001b[22m1\u001b[2m test using \u001b[22m1\u001b[2m worker\u001b[22m\n\n◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]\nENV: qa\nBASE URL: https://stg.zoworld.app/ed-tech/\n◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]\n\u001b[33m5\u001b[39m\n[REPORTER] STARTED: TC-007 - Send OTP is enabled even when mobile number has fewer than 10 digits (checkbox checked)\n[Worker 0][chromium]STARTED: TC-007 - Send OTP is enabled even when mobile number has fewer than 10 digits (checkbox checked)\n[HOOK] BEFORE EACH: TC-007 - Send OTP is enabled even when mobile number has fewer than 10 digits (checkbox checked)\ned-tech\n[HOOK] AFTER EACH: TC-007 - Send OTP is enabled even when mobile number has fewer than 10 digits (checkbox checked) - passed\n[Worker 0] [chromium] FINISHED: TC-007 - Send OTP is enabled even when mobile number has fewer than 10 digits (checkbox checked) (3476ms)\n  \u001b[32m✓\u001b[39m  \u001b[2m1 \u001b[22m[chromium] › tests/TEST-1-login.spec.ts:119:5 › TC-007 - Send OTP is enabled even when mobile number has fewer than 10 digits (checkbox checked)\u001b[2m (1.8s)\u001b[22m\n[REPORTER] FINISHED: TC-007 - Send OTP is enabled even when mobile number has fewer than 10 digits (checkbox checked) | Status: passed | Duration: 1822ms\n[GLOBAL] TEST RUN FINISHED\n\n\u001b[32m  1 passed\u001b[39m\u001b[2m (3.8s)\u001b[22m\n[REPORTER] TEST RUN FINISHED: passed\n",
+    "failureType": "AUTOMATION_EXECUTION_FAILURE",
+    "environment": "qa",
+    "browser": "chromium",
+    "timestamp": "2026-09-21T05:08:54.442Z"
+  }
+]

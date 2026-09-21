@@ -1,0 +1,5 @@
+[Worker 0][chromium]STARTED: TC-008 - Send OTP is enabled even when mobile number field is empty (checkbox checked)
+[HOOK] BEFORE EACH: TC-008 - Send OTP is enabled even when mobile number field is empty (checkbox checked)
+ed-tech
+[HOOK] AFTER EACH: TC-008 - Send OTP is enabled even when mobile number field is empty (checkbox checked) - failed
+[Worker 0] [chromium] FINISHED: TC-008 - Send OTP is enabled even when mobile number field is empty (checkbox checked) (2812ms)

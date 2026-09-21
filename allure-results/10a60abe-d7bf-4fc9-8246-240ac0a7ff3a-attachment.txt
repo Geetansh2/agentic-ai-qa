@@ -1,0 +1,5 @@
+[Worker 0][chromium]STARTED: TC-007 - Send OTP is enabled even when mobile number has fewer than 10 digits (checkbox checked)
+[HOOK] BEFORE EACH: TC-007 - Send OTP is enabled even when mobile number has fewer than 10 digits (checkbox checked)
+ed-tech
+[HOOK] AFTER EACH: TC-007 - Send OTP is enabled even when mobile number has fewer than 10 digits (checkbox checked) - passed
+[Worker 0] [chromium] FINISHED: TC-007 - Send OTP is enabled even when mobile number has fewer than 10 digits (checkbox checked) (3476ms)

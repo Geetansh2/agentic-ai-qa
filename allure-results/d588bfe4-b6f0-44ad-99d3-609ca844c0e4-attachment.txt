@@ -1,0 +1,12 @@
+
+========================================
+       HUMAN APPROVAL REQUIRED
+========================================
+Action: CREATE_PULL_REQUEST
+Target: TEST-1 automation
+Environment: qa
+Reason: Create a pull request.
+Risk: Creates an external repository change.
+Reversible: Yes
+========================================
+Type APPROVED or REJECTED:

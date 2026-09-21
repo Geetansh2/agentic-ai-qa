@@ -1,0 +1,82 @@
+
+========================================
+[AGENT] Starting autonomous QA workflow: TEST-1
+========================================
+
+
+[AGENT] Starting automation planning for TEST-1
+[AGENT] TC-001: ALREADY AUTOMATED → SKIP
+[AGENT] TC-002: ALREADY AUTOMATED → SKIP
+[AGENT] TC-003: ALREADY AUTOMATED → SKIP
+[AGENT] TC-004: ALREADY AUTOMATED → SKIP
+[AGENT] TC-005: ALREADY AUTOMATED → SKIP
+[AGENT] TC-006: ALREADY AUTOMATED → SKIP
+[AGENT] TC-007: ALREADY AUTOMATED → SKIP
+[AGENT] TC-008: ALREADY AUTOMATED → SKIP
+[AGENT] TC-009: ALREADY AUTOMATED → SKIP
+[AGENT] TC-010: ALREADY AUTOMATED → SKIP
+[AGENT] TC-011: ALREADY AUTOMATED → SKIP
+[AGENT] TC-012: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-013: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-014: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-015: NOT AUTOMATED → CANDIDATE
+[AGENT] TC-016: NOT AUTOMATED → CANDIDATE
+[TEST CASE SELECTOR] Candidates: 5
+[AGENT] LLM selected test case: TC-012
+[AGENT] Selection reason: Core high-priority test for sending OTP and navigating to OTP entry screen; selected because it validates the primary OTP trigger flow but is currently blocked by lack of a QA OTP mechanism.
+[AUTOMATION PLANNER] Strategy: api-ui-hybrid
+[AUTOMATION PLANNER] Reason: The test asserts both backend behavior (OTP send) and UI behavior (navigation to OTP entry screen). Because sending a real OTP is blocked, automation should exercise or mock the API/backend OTP flow (or use a QA/test endpoint) and then validate the UI navigation, so both API interaction and UI checks are required.
+[AGENT] Strategy: api-ui-hybrid
+[AGENT] Execution type: hybrid
+[AGENT] Components: API Service, Page Object, Business Flow, Playwright Test
+
+[AGENT] Automation task created: {
+  "jiraIssueKey": "TEST-1",
+  "testCaseId": "TC-012",
+  "testCase": {
+    "id": "TC-012",
+    "title": "Send OTP triggers OTP delivery and navigates to OTP entry screen",
+    "preconditions": [
+      "Login page is loaded",
+      "Valid mobile number entered",
+      "Checkbox checked"
+    ],
+    "testData": {
+      "mobileNumber": "UNKNOWN - requires a real/QA-approved test number"
+    },
+    "steps": [
+      "Click 'Send OTP'"
+    ],
+    "expectedResult": "UNKNOWN - not observed. Expected to trigger OTP delivery and display an OTP entry screen, but this was not verified to avoid triggering a real OTP.",
+    "priority": "High",
+    "type": "positive",
+    "automationStatus": "Blocked",
+    "blockedReason": "No QA OTP mechanism available; executing this step would trigger a real OTP send."
+  },
+  "strategy": "api-ui-hybrid",
+  "executionType": "hybrid",
+  "components": [
+    "API Service",
+    "Page Object",
+    "Business Flow",
+    "Playwright Test"
+  ]
+}
+
+[AGENT] Generating automation for TC-012
+
+[PLAYWRIGHT AGENT] Generating automation for TC-012
+[PLAYWRIGHT AGENT] Loading Skill: /Users/geetansh/Documents/agentic-ai-qa/.claude/skills/playwright/SKILL.md
+[PROJECT INSPECTOR] Searching for: 012, Send, OTP, triggers, delivery, and, navigates, entry, screen, Login, page, loaded, Valid, mobile, number, entered, Checkbox, checked, UNKNOWN, requires, real, approved, test, Click, not, observed, Expected, trigger, display, but, this, was, verified, avoid, triggering, High, positive, Blocked, mechanism, available;, executing, step, would, send
+[PROJECT INSPECTOR] Discovered 70 project files
+[PROJECT INSPECTOR] Relevant files:
+  - tests/TEST-1-login.spec.ts
+  - pages/LoginPage.ts
+  - tests/NetworkMockingAgent.spec.ts
+  - tests/TEST-2-login.spec.ts
+  - tests/HistoricalFailureKnowledgeAgent.spec.ts
+  - tests/HistoricalFailureStore.spec.ts
+  - flows/LoginFlow.ts
+  - tests/AutomationPlanner.spec.ts
+  - tests/AutomationStrategyAgent.spec.ts
+  - tests/TEST-3-login-hybrid.spec.ts

@@ -115,3 +115,30 @@ test('TC-011 - Language toggle control is displayed on the login page', async ({
   const englishButton = page.getByRole('button', { name: 'English' });
   await expect(englishButton).toBeVisible();
 });
+
+test('TC-007 - Send OTP is enabled even when mobile number has fewer than 10 digits (checkbox checked)', async ({ loginFlow }) => {
+  // Precondition: Login page is loaded
+  await loginFlow.open();
+
+  // Enter a partial mobile number (5 digits) and accept Terms & Conditions
+  await loginFlow.enterMobileAndAcceptTerms('98765');
+
+  // Assertions: Terms should be checked and Send OTP should be enabled (observed behavior)
+  expect(await loginFlow.isTermsChecked()).toBe(true);
+  expect(await loginFlow.isSendOtpEnabled()).toBe(true);
+});
+
+test('TC-008 - Send OTP is enabled even when mobile number field is empty (checkbox checked)', async ({ loginFlow }) => {
+  // Precondition: Login page is loaded
+  await loginFlow.open();
+
+  // Verify mobile number is empty
+  expect(await loginFlow.getMobileNumberValue()).toBe('');
+
+  // Select Terms & Conditions
+  // await loginFlow.acceptTerms();
+
+  // Assertions: Terms should be checked and Send OTP should be enabled (observed behavior)
+  expect(await loginFlow.isTermsChecked()).toBe(true);
+  expect(await loginFlow.isSendOtpEnabled()).toBe(true);
+});
